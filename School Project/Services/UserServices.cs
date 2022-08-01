@@ -16,8 +16,6 @@ namespace School_Project.Services
         {
             using (var context = new SchoolContext())
             {
-                int MarksId = MarksServices.CreateMarks();
-                user.MarksId = MarksId;
                 user.Password = HashServices.HashPassword(user.Password);
                 user.Role = "Student";
                 context.Add(user);

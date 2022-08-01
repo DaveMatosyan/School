@@ -1,0 +1,50 @@
+﻿@using School_Project.Models;
+@{
+}
+   <body>
+      <table border = "1">
+         <tr>
+            @{
+				foreach(Timetable timetable in ViewBag.Timetables)
+				{
+					<td>@timetable.Weekday</td>
+				}
+			}
+         </tr>
+         
+         <tr>
+            @{
+				foreach(Timetable timetable in ViewBag.Timetables)
+				{
+					<td>@timetable._1</td>
+				}
+			}
+         </tr>
+         
+		 <tr>
+            @{
+				foreach(Timetable timetable in ViewBag.Timetables)
+				{
+					<td>@timetable._2</td>
+				}
+			}
+         </tr>
+		 <tr>
+            @{
+				foreach(Timetable timetable in ViewBag.Timetables)
+				{
+					<td>@timetable._3</td>
+				}
+			}
+         </tr>
+		 <tr>
+            @{
+				foreach(Timetable timetable in ViewBag.Timetables)
+				{
+					<td>@timetable._4</td>
+				}
+			}
+         </tr>
+      </table>
+      
+   </body>

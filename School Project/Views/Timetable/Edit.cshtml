@@ -1,0 +1,53 @@
+﻿@using School_Project.Models;
+@{
+}
+<form asp-action="Edit" asp-controller="Timetable" id="myForm" method="post">
+	   <div>
+      <table border = "1">
+         <tr>
+			 
+            @{
+				foreach(Timetable timetable in ViewBag.Timetables)
+				{
+						<td>@timetable.Weekday</td>
+				}
+			}
+         </tr>
+         
+         <tr>
+            @{
+				foreach(Timetable timetable in ViewBag.Timetables)
+				{
+						<td><div contenteditable>@timetable._1</div></td>
+				}
+			}
+         </tr>
+         
+		 <tr>
+            @{
+				foreach(Timetable timetable in ViewBag.Timetables)
+				{
+						<td><div contenteditable>@timetable._2</div></td>
+				}
+			}
+         </tr>
+		 <tr>
+            @{
+				foreach(Timetable timetable in ViewBag.Timetables)
+				{
+						<td><div contenteditable>@timetable._3</div></td>
+				}
+			}
+         </tr>
+		 <tr>
+            @{
+				foreach(Timetable timetable in ViewBag.Timetables)
+				{
+						<td><div contenteditable>@timetable._4</div></td>
+				}
+			}
+         </tr>
+      </table>
+      <button type="submit" value="submit" id="submitButton">Submit</button>
+   </div>
+</form>

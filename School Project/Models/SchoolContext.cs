@@ -16,7 +16,7 @@ namespace School_Project.Models
         {
         }
 
-        public virtual DbSet<Mark> Marks { get; set; } = null!;
+        public virtual DbSet<Timetable> Timetables { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,13 +30,45 @@ namespace School_Project.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Mark>(entity =>
+            modelBuilder.Entity<Timetable>(entity =>
             {
-                entity.Property(e => e.Chemistry).HasMaxLength(2000);
+                entity.HasNoKey();
 
-                entity.Property(e => e.Mathematics).HasMaxLength(2000);
+                entity.ToTable("Timetable");
 
-                entity.Property(e => e.Physics).HasMaxLength(2000);
+                entity.Property(e => e.Weekday).HasMaxLength(50);
+
+                entity.Property(e => e._1)
+                    .HasMaxLength(50)
+                    .HasColumnName("1");
+
+                entity.Property(e => e._2)
+                    .HasMaxLength(50)
+                    .HasColumnName("2");
+
+                entity.Property(e => e._3)
+                    .HasMaxLength(50)
+                    .HasColumnName("3");
+
+                entity.Property(e => e._4)
+                    .HasMaxLength(50)
+                    .HasColumnName("4");
+
+                entity.Property(e => e._5)
+                    .HasMaxLength(50)
+                    .HasColumnName("5");
+
+                entity.Property(e => e._6)
+                    .HasMaxLength(50)
+                    .HasColumnName("6");
+
+                entity.Property(e => e._7)
+                    .HasMaxLength(50)
+                    .HasColumnName("7");
+
+                entity.Property(e => e._8)
+                    .HasMaxLength(50)
+                    .HasColumnName("8");
             });
 
             modelBuilder.Entity<User>(entity =>
