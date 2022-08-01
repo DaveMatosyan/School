@@ -5,14 +5,12 @@ namespace School_Project.Models
 {
     public partial class Timetable
     {
-        public string Weekday { get; set; } = null!;
-        public string _1 { get; set; } = null!;
-        public string _2 { get; set; } = null!;
-        public string _3 { get; set; } = null!;
-        public string _4 { get; set; } = null!;
-        public string? _5 { get; set; }
-        public string? _6 { get; set; }
-        public string? _7 { get; set; }
-        public string? _8 { get; set; }
+        public int Id { get; set; }
+        public string ClassName { get; set; } = null!;
+        public string Monday { get; set; } = null!;
+        public string Tuesday { get; set; } = null!;
+        public string Wednesday { get; set; } = null!;
+        public string Thursday { get; set; } = null!;
+        public string Friday { get; set; } = null!;
     }
 }

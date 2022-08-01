@@ -15,6 +15,7 @@ namespace School_Project.Controllers
         }
         public IActionResult SignUp()
         {
+            ViewBag.Clases = TimetableServices.GetAllClasses();
             return View();
         }
         [HttpPost]
@@ -67,7 +68,7 @@ namespace School_Project.Controllers
             }
             if (user.Username != null && user.Password != null && user.FirstName != null && user.LastName != null)
             {
-                UserServices.Post(user);
+                //UserServices.PostStudent(user);
                 return RedirectToAction("Login");
             }
             return View();

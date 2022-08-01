@@ -10,5 +10,14 @@ namespace School_Project.Services
                 return context.Timetables.ToList();
             }
         }
+        static public List<string> GetAllClasses()
+        {
+            using (var context = new SchoolContext())
+            {
+                var items = context.Timetables.Where(u => u.ClassName != null).Select(u => u.ClassName).ToList();
+                return items;
+
+            }
+        }
     }
 }

@@ -12,12 +12,22 @@ namespace School_Project.Services
                 return context.Users.ToList();
             }
         }
-        static public void Post(User user)
+        static public void PostStudent(User user)
         {
             using (var context = new SchoolContext())
             {
                 user.Password = HashServices.HashPassword(user.Password);
                 user.Role = "Student";
+                context.Add(user);
+                context.SaveChanges();
+            }
+        }
+        static public void PostTeacher(User user)
+        {
+            using (var context = new SchoolContext())
+            {
+                user.Password = HashServices.HashPassword(user.Password);
+                user.Role = "Teacher";
                 context.Add(user);
                 context.SaveChanges();
             }
