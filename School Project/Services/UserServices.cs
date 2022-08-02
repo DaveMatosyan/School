@@ -71,5 +71,14 @@ namespace School_Project.Services
                 return false;
             }
         }
+        static public User? GetUser(string username, string password)
+        {
+            using (var context = new SchoolContext())
+            {
+                User user = context.Users
+    .Single(b => b.Username == username && HashServices.VerifyPassword(b.Password, password));
+                return user;
+            }
+        }
     }
 }

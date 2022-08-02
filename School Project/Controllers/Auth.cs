@@ -27,35 +27,22 @@ namespace School_Project.Controllers
 
             }
 
-            bool userExist = UserServices.isExist(credentials.Username, credentials.Password);
-            if (userExist)
+            User user = UserServices.GetUser(credentials.Username, credentials.Password);
+            if (user != null)
             {
-                if (UserServices.GetUserRole(credentials.Username, credentials.Password) == "Teacher")
-                {
-                    var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Role, "Teacher"),
-                };
-                    var idenity = new ClaimsIdentity(claims, "MyCookieAuth");
-                    ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(idenity);
-                    await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
 
-                    Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(credentials.Username), null);
-                    return Redirect("/");
-                }
-                else
+                var claims = new List<Claim>
                 {
-                    var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Role, "Student"),
+                    new Claim(ClaimTypes.Role, user.Role),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 };
-                    var idenity = new ClaimsIdentity(claims, "MyCookieAuth");
-                    ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(idenity);
-                    await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
+                var idenity = new ClaimsIdentity(claims, "MyCookieAuth");
 
-                    Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(credentials.Username), null);
-                    return Redirect("/");
-                }
+                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(idenity);
+                await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
+
+                Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(credentials.Username), null);
+                return Redirect("/");
             }
             return View();
         }
@@ -68,7 +55,7 @@ namespace School_Project.Controllers
             }
             if (user.Username != null && user.Password != null && user.FirstName != null && user.LastName != null)
             {
-                //UserServices.PostStudent(user);
+                UserServices.PostStudent(user);
                 return RedirectToAction("Login");
             }
             return View();

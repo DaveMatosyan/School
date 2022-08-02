@@ -7,13 +7,14 @@ namespace School_Project.Controllers
     public class Timetable : Controller
     {
 
-        [Authorize]
-        public IActionResult Show()
-        {
-            List<School_Project.Models.Timetable> timetables = TimetableServices.GetAll();
-            ViewBag.Timetables = timetables;
-            return View();
-        }
+        //[Authorize(Roles = "Student")]
+        //public IActionResult Show()
+        //{
+        //    //var value = Request.Cookies[]
+        //    Timetable timetable = TimetableServices.GetTimeTableByClass();
+        //    ViewBag.Timetables = timetable;
+        //    return View();
+        //}
 
     }
 }

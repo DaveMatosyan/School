@@ -10,11 +10,20 @@ namespace School_Project.Services
                 return context.Timetables.ToList();
             }
         }
+    //    static public Timetable GetTimeTableByClass(string Class)
+    //    {
+    //        using (var context = new SchoolContext())
+    //        {
+    //            Timetable TimeTable = context.Timetables
+    //.Single(b => b.ClassName == Class);
+    //            return TimeTable;
+    //        }
+    //    }
         static public List<string> GetAllClasses()
         {
             using (var context = new SchoolContext())
             {
-                var items = context.Timetables.Where(u => u.ClassName != null).Select(u => u.ClassName).ToList();
+                var items = context.Classes.Where(u => u.Class1 != null).Select(u => u.Class1).ToList();
                 return items;
 
             }

@@ -5,8 +5,7 @@ namespace School_Project.Models
 {
     public partial class Timetable
     {
-        public int Id { get; set; }
-        public string ClassName { get; set; } = null!;
+        public int ClassId { get; set; }
         public string Monday { get; set; } = null!;
         public string Tuesday { get; set; } = null!;
         public string Wednesday { get; set; } = null!;

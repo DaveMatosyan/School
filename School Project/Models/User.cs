@@ -11,7 +11,6 @@ namespace School_Project.Models
         public string Username { get; set; } = null!;
         public string Password { get; set; } = null!;
         public string Role { get; set; } = null!;
-        public string? Profession { get; set; }
-        public string? Class { get; set; }
+        public int? ClassId { get; set; }
     }
 }

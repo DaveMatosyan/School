@@ -16,7 +16,7 @@ namespace School_Project.Models
         {
         }
 
-        public virtual DbSet<ClassTeacher> ClassTeachers { get; set; } = null!;
+        public virtual DbSet<Class> Classes { get; set; } = null!;
         public virtual DbSet<Timetable> Timetables { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
@@ -31,28 +31,20 @@ namespace School_Project.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ClassTeacher>(entity =>
+            modelBuilder.Entity<Class>(entity =>
             {
-                entity.HasKey(e => e.ClassName);
-
-                entity.Property(e => e.ClassName).HasMaxLength(50);
-
-                entity.Property(e => e.ChemistryTeacher).HasMaxLength(50);
-
-                entity.Property(e => e.MathTeacher).HasMaxLength(50);
-
-                entity.Property(e => e.PhysicsTeacher).HasMaxLength(50);
+                entity.Property(e => e.Class1)
+                    .HasMaxLength(50)
+                    .HasColumnName("Class");
             });
 
             modelBuilder.Entity<Timetable>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.ClassId);
 
-                entity.Property(e => e.ClassName).HasMaxLength(50);
+                entity.Property(e => e.ClassId).ValueGeneratedNever();
 
                 entity.Property(e => e.Friday).HasMaxLength(200);
-
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Monday).HasMaxLength(200);
 
@@ -65,15 +57,11 @@ namespace School_Project.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.Class).HasMaxLength(50);
-
                 entity.Property(e => e.FirstName).HasMaxLength(50);
 
                 entity.Property(e => e.LastName).HasMaxLength(50);
 
                 entity.Property(e => e.Password).HasMaxLength(200);
-
-                entity.Property(e => e.Profession).HasMaxLength(50);
 
                 entity.Property(e => e.Role).HasMaxLength(50);
 
