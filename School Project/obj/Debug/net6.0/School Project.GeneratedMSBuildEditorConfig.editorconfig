@@ -39,8 +39,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/School Project/School Project/Views/Timetable/Show.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZXRhYmxlXFNob3cuY3NodG1s
+[C:/Users/user/source/repos/School Project/School Project/Views/Timetable/Student.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZXRhYmxlXFN0dWRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/source/repos/School Project/School Project/Views/Timetable/Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZXRhYmxlXFRlYWNoZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/user/source/repos/School Project/School Project/Views/_ViewImports.cshtml]

@@ -15,7 +15,7 @@ namespace School_Project.Controllers
         }
         public IActionResult SignUp()
         {
-            ViewBag.Clases = TimetableServices.GetAllClasses();
+            ViewBag.Clases = ClassServices.GetAllClasses();
             return View();
         }
         [HttpPost]
@@ -34,7 +34,7 @@ namespace School_Project.Controllers
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Role, user.Role),
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Name, user.Id.ToString()),
                 };
                 var idenity = new ClaimsIdentity(claims, "MyCookieAuth");
 

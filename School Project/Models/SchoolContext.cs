@@ -63,6 +63,8 @@ namespace School_Project.Models
 
                 entity.Property(e => e.Password).HasMaxLength(200);
 
+                entity.Property(e => e.Profession).HasMaxLength(50);
+
                 entity.Property(e => e.Role).HasMaxLength(50);
 
                 entity.Property(e => e.Username).HasMaxLength(50);

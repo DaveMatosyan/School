@@ -32,17 +32,6 @@ namespace School_Project.Services
                 context.SaveChanges();
             }
         }
-        static public string GetUserRole(string username, string password)
-        {
-            foreach (var user in GetAll())
-            {
-                if (user.Username == username && HashServices.VerifyPassword(user.Password, password))
-                {
-                    return user.Role;
-                }
-            }
-            return "";
-        }
         static public bool isUsernameExist(string username)
         {
             using (var context = new SchoolContext())
@@ -57,7 +46,9 @@ namespace School_Project.Services
                 return false;
             }
         }
-        static public bool isExist(string username, string password)
+
+
+        static public User? GetUser(string username, string password)
         {
             using (var context = new SchoolContext())
             {
@@ -65,18 +56,21 @@ namespace School_Project.Services
                 {
                     if (user.Username == username && HashServices.VerifyPassword(user.Password, password))
                     {
-                        return true;
+                        return user;
                     }
                 }
-                return false;
+                return null;
             }
         }
-        static public User? GetUser(string username, string password)
+        static public User? GetUserById(int Id)
         {
             using (var context = new SchoolContext())
             {
-                User user = context.Users
-    .Single(b => b.Username == username && HashServices.VerifyPassword(b.Password, password));
+                User user = context.Users.Find(Id);
+                if(user==null)
+                {
+                    return null;
+                }
                 return user;
             }
         }
