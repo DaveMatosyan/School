@@ -1,8 +1,39 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+    <link rel="stylesheet" href="~/css/site.css" />
+
+        @if (@ViewBag.User!=null)
+    {
+        <div class="wrapper">
+            <div class="sidebar">
+                <ul>
+                        @if (User.IsInRole("Principal"))
+    {
+                    <li><a href="Principal/Allclasses"><i class="AllClasses"></i>AllClasses</a></li>
+                    <li><a href="Principal/AddTeacher"><i class="AddTeacher"></i>AddTeacher</a></li>
+
+    }
+                            @if (User.IsInRole("Teacher") || User.IsInRole("Student"))
+    {
+                    <li><a href="Schedule/AllDays"><i class="AllClasses"></i>Weekdays</a></li>
+
+    }
+
+                </ul>
+            </div>
+        </div>
+    }
+
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h1 class="display-4">Welcome dear @ViewBag.User.FirstName</h1>
+    } else
+    {
+        <h1 class="display-4">Welcome</h1>
+        <h2>@Html.RouteLink("LogIn", new {controller = "Auth", action = "LogIn"})</h2>
+        <h2>@Html.RouteLink("SignUp", new {controller = "Auth", action = "SignUp"})</h2>
+    }
 </div>

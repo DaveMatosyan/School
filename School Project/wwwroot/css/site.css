@@ -14,5 +14,38 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+    display: flex;
+    position: relative;
+    right: 120px;
+}
+
+.wrapper .sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    padding: 30px 0;
+}
+
+.wrapper .sidebar ul li {
+    padding: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(225,225,225,0.05)
+}
+
+.wrapper .sidebar ul li a{
+    color: #bdb8d7;
+    display: block;
+}
+
+
+.wrapper .sidebar ul li:hover {
+    background: #594f8d;
+}
+
+.wrapper .sidebar ul li:hover a{
+    color: #fff;
 }

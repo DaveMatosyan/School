@@ -15,7 +15,8 @@ namespace School_Project.Controllers
         }
         public IActionResult SignUp()
         {
-            ViewBag.Clases = ClassServices.GetAllClasses();
+            var classes = ClassServices.GetAllClasses();
+            ViewBag.Clases = classes;
             return View();
         }
         [HttpPost]
@@ -59,6 +60,11 @@ namespace School_Project.Controllers
                 return RedirectToAction("Login");
             }
             return View();
+        }
+        public async Task<IActionResult> LogOutAsync()
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect("/");
         }
     }
 }

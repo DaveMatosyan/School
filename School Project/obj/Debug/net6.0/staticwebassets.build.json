@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "P06JvJmT2mx1s73PZJchMyCXHWHHEaI5ljqUUAhAwFM=",
+  "Hash": "4NBYRtWYqbx8Lk7jiwMoRuiSYyE1bEMTZnuggNe72i0=",
   "Source": "School Project",
   "BasePath": "_content/School Project",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\css\\weekdays.css",
+      "SourceId": "School Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\",
+      "BasePath": "_content/School Project",
+      "RelativePath": "css/weekdays.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\weekdays.css"
     },
     {
       "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\favicon.ico",

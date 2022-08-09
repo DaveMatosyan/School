@@ -17,7 +17,7 @@ namespace School_Project.Models
         }
 
         public virtual DbSet<Class> Classes { get; set; } = null!;
-        public virtual DbSet<Timetable> Timetables { get; set; } = null!;
+        public virtual DbSet<Schedule> Schedules { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -38,21 +38,21 @@ namespace School_Project.Models
                     .HasColumnName("Class");
             });
 
-            modelBuilder.Entity<Timetable>(entity =>
+            modelBuilder.Entity<Schedule>(entity =>
             {
-                entity.HasKey(e => e.ClassId);
+                entity.Property(e => e.Title).HasMaxLength(50);
 
-                entity.Property(e => e.ClassId).ValueGeneratedNever();
+                entity.HasOne(d => d.Class)
+                    .WithMany(p => p.Schedules)
+                    .HasForeignKey(d => d.ClassId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Schedules_Classes");
 
-                entity.Property(e => e.Friday).HasMaxLength(200);
-
-                entity.Property(e => e.Monday).HasMaxLength(200);
-
-                entity.Property(e => e.Thursday).HasMaxLength(200);
-
-                entity.Property(e => e.Tuesday).HasMaxLength(200);
-
-                entity.Property(e => e.Wednesday).HasMaxLength(200);
+                entity.HasOne(d => d.Teacher)
+                    .WithMany(p => p.Schedules)
+                    .HasForeignKey(d => d.TeacherId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Schedules_Users");
             });
 
             modelBuilder.Entity<User>(entity =>

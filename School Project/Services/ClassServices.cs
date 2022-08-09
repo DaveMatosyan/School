@@ -4,11 +4,20 @@ namespace School_Project.Services
 {
     public class ClassServices
     {
-        static public List<string> GetAllClasses()
+        static public List<Class> GetAllClasses()
         {
             using (var context = new SchoolContext())
             {
-                var items = context.Classes.Where(u => u.Class1 != null).Select(u => u.Class1).ToList();
+                var items = context.Classes.ToList();
+                return items;
+
+            }
+        }
+        static public List<Class> GetAllClassesInList()
+        {
+            using (var context = new SchoolContext())
+            {
+                var items = context.Classes.ToList();
                 return items;
 
             }

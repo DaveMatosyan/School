@@ -7,6 +7,8 @@
         public string LastName { get; set; } = null!;
         public string Username { get; set; } = null!;
         public string Password { get; set; } = null!;
-        public string Class { get; set; } = null!;
+        public string? ClassId { get; set; } = null!;
+        public string? Profession { get; set; } = null!;
+
     }
 }

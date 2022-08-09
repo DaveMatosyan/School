@@ -62,15 +62,11 @@ namespace School_Project.Services
                 return null;
             }
         }
-        static public User? GetUserById(int Id)
+        static public User GetUserById(int Id)
         {
             using (var context = new SchoolContext())
             {
                 User user = context.Users.Find(Id);
-                if(user==null)
-                {
-                    return null;
-                }
                 return user;
             }
         }

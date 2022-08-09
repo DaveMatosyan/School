@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using School_Project.Models;
+using School_Project.Services;
 using System.Diagnostics;
 
 namespace School_Project.Controllers
@@ -15,6 +16,8 @@ namespace School_Project.Controllers
 
         public IActionResult Index()
         {
+            int UserId = Convert.ToInt32(User.Identity.Name);
+            ViewBag.User = UserServices.GetUserById(UserId);
             return View();
         }
 
