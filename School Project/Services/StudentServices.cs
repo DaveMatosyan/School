@@ -1,4 +1,5 @@
-﻿using School_Project.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using School_Project.Models;
 
 namespace School_Project.Services
 {
@@ -9,7 +10,7 @@ namespace School_Project.Services
             int? classId = UserServices.GetUserById(StudentId).ClassId;
             using (SchoolContext db = new SchoolContext())
             {
-                var list = db.Schedules.Where(b => b.Class.Id == classId && b.DayId == WeekdayId).OrderBy(o => o.Hour).ToList();
+                var list = db.Schedules.Where(b => b.Class.Id == classId && b.DayId == WeekdayId).Include("Teacher").OrderBy(o => o.Hour).ToList();
                 return list;
             }
         }

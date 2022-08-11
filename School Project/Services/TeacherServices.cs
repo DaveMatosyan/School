@@ -26,13 +26,5 @@ namespace School_Project.Services
                 return list;
             }
         }
-        public static dynamic GetTeachersLessonsByWeekday(int TeacherId, int WeekdayId)
-        {
-            using (SchoolContext db = new SchoolContext())
-            {
-                var list = db.Schedules.Where(b => b.TeacherId == TeacherId && b.DayId == WeekdayId).Include("Class").OrderBy(o => o.Hour).ToList();
-                return list;
-            }
-        }
     }
 }

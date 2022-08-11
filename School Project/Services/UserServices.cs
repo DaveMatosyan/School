@@ -70,5 +70,13 @@ namespace School_Project.Services
                 return user;
             }
         }
+        static public User GetUserByUsername(string username)
+        {
+            using (var context = new SchoolContext())
+            {
+                User user = context.Users.FirstOrDefault(b => b.Username == username);
+                return user;
+            }
+        }
     }
 }

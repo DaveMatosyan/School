@@ -9,7 +9,7 @@
                 @if(User.IsInRole("Principal"))
 {
                 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">Create New</a>
 </p>
 }
 
@@ -48,6 +48,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
+                @if(!User.IsInRole("Teacher"))
+{
+            <th>
+ @*               @Html.DisplayFor(modelItem => )*@
+                @item.Teacher.FirstName @item.Teacher.LastName
+            </th>
+}
                 @if(User.IsInRole("Teacher"))
 {
             <th>
@@ -58,7 +65,7 @@
                 @if(User.IsInRole("Principal"))
 {
                 <td>
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" asp-route-index="@ViewBag.index" asp-route-ClassId="@ViewBag.ClassId">Delete</a>
             </td>
 }
             
