@@ -23,6 +23,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
+                @if(!User.IsInRole("Teacher"))
+{
+            <th>
+                @Html.DisplayNameFor(model => model.Teacher)
+            </th>
+}
                 @if(User.IsInRole("Teacher"))
 {
             <th>

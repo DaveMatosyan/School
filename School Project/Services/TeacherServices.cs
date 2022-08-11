@@ -17,6 +17,15 @@ namespace School_Project.Services
                 return list;
             }
         }
+        public static dynamic GetTeachers()
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+
+                var list = db.Users.Where(b => b.Profession != null && b.Profession != "Principal").ToList();
+                return list;
+            }
+        }
         public static dynamic GetTeachersLessonsByWeekday(int TeacherId, int WeekdayId)
         {
             using (SchoolContext db = new SchoolContext())

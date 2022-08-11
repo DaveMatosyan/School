@@ -10,16 +10,15 @@
                 <ul>
                         @if (User.IsInRole("Principal"))
     {
-                    <li><a href="Principal/Allclasses"><i class="AllClasses"></i>AllClasses</a></li>
-                    <li><a href="Principal/AddTeacher"><i class="AddTeacher"></i>AddTeacher</a></li>
+                    <li><a href="Class/Allclasses"><i class="AllClasses"></i>Classes</a></li>
+                    <li><a href="Teacher/AllTeachers"><i class="AllTeachers"></i>Teachers</a></li>
+                    <li><a href="Teacher/AddTeacher"><i class="AddTeacher"></i>AddTeacher</a></li>
 
     }
                             @if (User.IsInRole("Teacher") || User.IsInRole("Student"))
     {
                     <li><a href="Schedule/AllDays"><i class="AllClasses"></i>Weekdays</a></li>
-
     }
-
                 </ul>
             </div>
         </div>

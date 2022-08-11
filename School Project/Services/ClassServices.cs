@@ -34,5 +34,28 @@ namespace School_Project.Services
                 return class1;
             }
         }
+        static public void PostClass(Class c)
+        {
+            using (var context = new SchoolContext())
+            {
+                context.Add(c);
+                context.SaveChanges();
+            }
+        }
+        
+        static public bool IsClassExist(string ClassName)
+        {
+            using (var context = new SchoolContext())
+            {
+                foreach (var c in GetAllClasses())
+                {
+                    if (c.Class1 == ClassName)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
     }
 }
