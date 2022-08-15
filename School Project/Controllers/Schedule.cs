@@ -15,6 +15,13 @@ namespace School_Project.Controllers
             return View();
         }
 
+        public IActionResult ClassTimetable(int ClassId)
+        {
+            ViewBag.ClassId = ClassId;
+            var schedules = ScheduleServices.GetScedulesByClassId(ClassId);
+            ViewBag.schedules = schedules;
+            return View();
+        }
         public IActionResult Timetable(int index, int ClassId)
         {
             ViewBag.index = index;

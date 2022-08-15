@@ -1,0 +1,79 @@
+﻿@model IEnumerable<School_Project.Models.Schedule>
+
+@{
+    ViewData["Title"] = "Timetable";
+}
+
+<h1>Timetable</h1>
+
+                @if(User.IsInRole("Principal"))
+{
+                <p>
+    <a asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">Create New</a>
+</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Monday
+            </th>
+            <th>
+                Tuesday
+            </th>
+            <th>
+                Wednesday
+            </th>
+            <th>
+                Thursday
+            </th>
+            <th>
+                Friday
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int temp = 0;
+        }
+        @for(int i = 1; i < 8; i++) {
+    <tr>
+    @for(int j = 1; j <= 5; j++) {
+            @foreach(var item in @ViewBag.schedules)
+            {
+                    @if(item.DayId == j && item.Hour == i)
+                    {
+
+                            temp += 1;
+                            <td>
+                                @item.Title
+                        </td>
+                    }
+
+                    }
+                    if(temp==1)
+                    {
+                        temp -= 1;
+                    } else
+                    {
+                    <td>
+                        -
+                    </td>
+                    }
+
+    }
+    </tr>
+}
+<tr>
+    @for(int i = 1; i <= 5; i++) {
+        <td>
+                <a asp-action="Timetable" asp-route-index="@i" asp-route-ClassId="@ViewBag.ClassId">Details</a>
+        </td>
+}
+</tr>
+
+
+    </tbody>
+</table>

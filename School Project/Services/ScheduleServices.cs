@@ -9,7 +9,7 @@ namespace School_Project.Services
         {
             using (SchoolContext db = new SchoolContext())
             {
-                var list = db.Schedules.Where(b => b.TeacherId == ClassId).OrderBy(o => o.Hour).OrderBy(o => o.DayId).ToList();
+                var list = db.Schedules.Where(b => b.ClassId == ClassId).OrderBy(o => o.Hour).OrderBy(o => o.DayId).ToList();
                 return list;
             }
         }
