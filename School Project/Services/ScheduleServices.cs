@@ -5,7 +5,7 @@ namespace School_Project.Services
 {
     public class ScheduleServices
     {
-        public static List<Schedule> GetScedulesByClassId(int ClassId)
+        public static List<Schedule> GetScedulesByClassId(int? ClassId)
         {
             using (SchoolContext db = new SchoolContext())
             {
@@ -13,6 +13,15 @@ namespace School_Project.Services
                 return list;
             }
         }
+        public static List<Schedule> GetScedulesByTeacherId(int? TeacherId)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                var list = db.Schedules.Where(b => b.TeacherId == TeacherId).OrderBy(o => o.Hour).OrderBy(o => o.DayId).ToList();
+                return list;
+            }
+        }
+
         public static void DeleteSchedule(int SchdeuleId)
         {
             using (SchoolContext db = new SchoolContext())
@@ -37,8 +46,13 @@ namespace School_Project.Services
 
             using (SchoolContext db = new SchoolContext())
             {
-                db.Add(schedule);
-                db.SaveChanges();
+                var IsExsist = db.Schedules.FirstOrDefault(c => c.ClassId == schedule.ClassId && c.DayId == schedule.DayId && c.Hour == schedule.Hour);
+                if(IsExsist == null)
+                {
+                    db.Add(schedule);
+                    db.SaveChanges();
+                }
+
             }
         }
         public static dynamic GetschedulesByClassId(int ClassId, int WeekdayId)
@@ -54,6 +68,14 @@ namespace School_Project.Services
             using (SchoolContext db = new SchoolContext())
             {
                 var list = db.Schedules.Where(b => b.TeacherId == TeacherId && b.DayId == WeekdayId).Include("Class").OrderBy(o => o.Hour).ToList();
+                return list;
+            }
+        }
+        public static dynamic getWeekDayLessonsByClassId(int ?ClassId, int WeekdayId)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                var list = db.Schedules.Where(b => b.ClassId == ClassId && b.DayId == WeekdayId).Include("Teacher").OrderBy(o => o.Hour).ToList();
                 return list;
             }
         }

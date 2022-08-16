@@ -11,12 +11,6 @@ namespace School_Project.Controllers
             List<User> list = TeacherServices.GetTeachers();
             return View(list);
         }
-        public IActionResult AllDays(int ClassId)
-        {
-            ViewBag.ClassId = ClassId;
-            List<School_Project.Models.Class> list = ClassServices.GetAllClassesInList();
-            return View(list);
-        }
         public IActionResult AddTeacher()
         {
             return View();

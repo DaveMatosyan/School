@@ -9,17 +9,29 @@ namespace School_Project.Controllers
     [Authorize]
     public class Schedule : Controller
     {
-        [Authorize(Roles = "Student,Teacher")]
-        public IActionResult AllDays()
-        {
-            return View();
-        }
-
-        public IActionResult ClassTimetable(int ClassId)
+        public IActionResult WeekTimetable(int? ClassId)
         {
             ViewBag.ClassId = ClassId;
-            var schedules = ScheduleServices.GetScedulesByClassId(ClassId);
-            ViewBag.schedules = schedules;
+            IPrincipal iPrincipalUser = User;
+            int UserId = Convert.ToInt32(User.Identity.Name);
+            if (User.IsInRole("Student"))
+            {
+                ClassId = UserServices.GetUserById(UserId).ClassId;
+                ViewBag.ClassId = ClassId;
+                var schedules = ScheduleServices.GetScedulesByClassId(ClassId);
+                ViewBag.schedules = schedules;
+            }
+            
+            if (User.IsInRole("Teacher"))
+            {
+                var schedules = ScheduleServices.GetScedulesByTeacherId(UserId);
+                ViewBag.schedules = schedules;
+            }
+            if (User.IsInRole("Principal"))
+            {
+                var schedules = ScheduleServices.GetScedulesByClassId(ClassId);
+                ViewBag.schedules = schedules;
+            }
             return View();
         }
         public IActionResult Timetable(int index, int ClassId)
@@ -31,7 +43,9 @@ namespace School_Project.Controllers
             int UserId = Convert.ToInt32(User.Identity.Name);
             if (User.IsInRole("Student"))
             {
-                List<Models.Schedule> list = ScheduleServices.GetTeachersLessonsByWeekday(UserId, index);
+                int? temp = UserServices.GetUserById(UserId).ClassId;
+                ViewBag.ClassId = ClassId;
+                List<Models.Schedule> list = ScheduleServices.getWeekDayLessonsByClassId(temp, index);
                 return View(list);
             }
             if (User.IsInRole("Teacher"))
@@ -57,7 +71,7 @@ namespace School_Project.Controllers
             User user = UserServices.GetUserByUsername(Credentials.TeacherUsername);
             if (user != null)
             {
-                //ScheduleServices.PostSchedule(Credentials, ClassId, user.Id, user.Profession);
+                ScheduleServices.PostSchedule(Credentials, ClassId, user.Id, user.Profession);
             }
             return RedirectToAction("Timetable", new { index = Credentials.DayId, ClassId = ClassId });
         }
