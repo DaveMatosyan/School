@@ -17,7 +17,7 @@ namespace School_Project.Services
         {
             using (SchoolContext db = new SchoolContext())
             {
-                var list = db.Schedules.Where(b => b.TeacherId == TeacherId).OrderBy(o => o.Hour).OrderBy(o => o.DayId).ToList();
+                var list = db.Schedules.Where(b => b.TeacherId == TeacherId).Include("Class").OrderBy(o => o.Hour).OrderBy(o => o.DayId).ToList();
                 return list;
             }
         }

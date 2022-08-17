@@ -53,7 +53,15 @@
 
                             temp += 1;
                             <td>
-                                @item.Title
+                                
+                                @if(!User.IsInRole("Teacher"))
+                                {
+                                    @item.Title
+                                } else
+                                {
+                                    @item.Class.Class1
+                                }
+
                         </td>
                     }
 
