@@ -26,5 +26,20 @@ namespace School_Project.Services
                 return list;
             }
         }
+        public static void Edit(User Teacher)
+        {
+
+        }
+        public static void DeleteTeacher(int TeacherId)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                var itemsToRemove = db.Schedules.Where(x => x.TeacherId == TeacherId); //returns a single item.
+                var Teacher = db.Users.Find(TeacherId);
+                db.Schedules.RemoveRange(itemsToRemove);
+                db.Users.Remove(Teacher);
+                db.SaveChanges();
+            }
+        }
     }
 }

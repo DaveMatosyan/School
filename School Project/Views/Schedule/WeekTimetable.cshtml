@@ -16,7 +16,9 @@
 <table class="table">
     <thead>
         <tr>
-
+            <th>
+                Hour
+            </th>
             <th>
                 Monday
             </th>
@@ -40,6 +42,9 @@
         }
         @for(int i = 1; i < 8; i++) {
     <tr>
+        <td>
+            @i
+        </td>
     @for(int j = 1; j <= 5; j++) {
             @foreach(var item in @ViewBag.schedules)
             {
@@ -68,8 +73,12 @@
 }
         @if(!User.IsInRole("Teacher"))
         {
-                    <tr>
+<tr>
+    <td>
+        WeekDay
+    </td>
     @for(int i = 1; i <= 5; i++) {
+
         <td>
                 <a asp-action="Timetable" asp-route-index="@i" asp-route-ClassId="@ViewBag.ClassId">Details</a>
         </td>

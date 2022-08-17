@@ -1,0 +1,45 @@
+﻿@model School_Project.Models.User
+
+@{
+    ViewData["Title"] = "EditTeacher";
+}
+
+<h1>EditTeacher</h1>
+
+<form action="/Teacher/Edit/@Model.Id" method="post">
+   <input name="__RequestVerificationToken" type="hidden" value="UxY6bkQyJCXO3Kn5AXg-6TXxOj6yVBi9tghHaQ5Lq_qwKvcojNXEEfcbn-FGh_0vuw4tS_BRk7QQQHlJp8AP4_X4orVNoQnp2cd8kXhykS01" />  <fieldset class="form-horizontal">
+      <legend>Movie</legend>
+
+      <input data-val="true" data-val-number="The field ID must be a number." data-val-required="The ID field is required." id="ID" name="ID" type="hidden" value="4" />
+
+      <div class="control-group">
+         <label class="control-label" for="@Model.FirstName">FirstName</label>
+         <div class="controls">
+            <input class="text-box single-line" id="FirstName" name="FirstName" type="text" value="@Model.FirstName" />
+         </div>
+      </div>
+      <div class="control-group">
+         <label class="control-label" for="@Model.LastName">LastName</label>
+         <div class="controls">
+            <input class="text-box single-line" id="LastName" name="LastName" type="text" value="@Model.LastName" />
+         </div>
+      </div>
+      <div class="control-group">
+         <label class="control-label" for="@Model.Username">Username</label>
+         <div class="controls">
+            <input class="text-box single-line" id="Username" name="Username" type="text" value="@Model.Username" />
+         </div>
+      </div>
+      <div class="control-group">
+         <label class="control-label" for="@Model.Password">Password</label>
+         <div class="controls">
+            <input class="text-box single-line" id="Password" name="Password" type="text" />
+         </div>
+      </div>
+
+
+      <div class="form-actions no-color">
+         <input type="submit" value="Save" class="btn" />
+      </div>
+   </fieldset>
+</form>
