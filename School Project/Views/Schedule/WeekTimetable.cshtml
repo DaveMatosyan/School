@@ -3,13 +3,16 @@
 @{
     ViewData["Title"] = "Timetable";
 }
+<link rel="stylesheet" href="~/css/site.css" />
+
+<div class="col py-3">
 
 <h1>Timetable</h1>
 
                 @if(User.IsInRole("Principal"))
 {
                 <p>
-    <a asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">Create New</a>
+    <a class="without-underscore-link" asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">Create New</a>
 </p>
 }
 
@@ -54,15 +57,16 @@
                             temp += 1;
                             <td>
                                 
-                                @if(!User.IsInRole("Teacher"))
-                                {
-                                    @item.Title
-                                } else
-                                {
-                                    @item.Class.Class1
-                                }
-
-                        </td>
+                                    @if(User.IsInRole("Teacher"))
+                                    {
+                                        @item.Class.Class1
+                                    } else if (User.IsInRole("Student"))
+                                    {
+                                        @item.Title
+                                    } else {
+                                        <a class="without-underscore-link" asp-controller="Schedule" asp-action="Edit" asp-route-DayId="@j" asp-route-Hour="@i">@item.Title</a>
+                                    }
+                            </td>
                     }
 
                     }
@@ -71,9 +75,19 @@
                         temp -= 1;
                     } else
                     {
-                    <td>
-                        -
-                    </td>
+                            @if(User.IsInRole("Principal"))
+                            {
+                                <td>
+                                    <a class="without-underscore-link" asp-controller="Schedule" asp-action="Create" asp-route-DayId="@j" asp-route-Hour="@i">-</a>
+                                </td>
+                                
+                            } else 
+                            {
+                                <td>
+                                    -
+                                </td>
+                            }
+
                     }
 
     }
@@ -98,3 +112,4 @@
 
     </tbody>
 </table>
+</div>

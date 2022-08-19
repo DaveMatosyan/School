@@ -5,7 +5,41 @@
 }
 
 <h1>Details</h1>
+<table class="table">
 
+    <tr>
+            <th>
+                FirstName
+            </th>
+            <th>
+                LastName
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Profession
+            </th>
+    </tr>
+        <tr>
+            <th>
+                @Html.DisplayFor(model => model.FirstName )
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.LastName )
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.Username )
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.Profession )
+            </th>
+    </tr>
+
+
+
+</table>
+@*
 <h4>
     FirstName - @Html.DisplayFor(model => model.FirstName )
 </h4>
@@ -21,4 +55,4 @@
 <h4>
     Profession - @Html.DisplayFor(model => model.Profession )
 </h4>
-<p></p>
+<p></p>*@

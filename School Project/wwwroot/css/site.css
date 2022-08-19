@@ -17,6 +17,11 @@ body {
   margin-bottom: 20px;
 }
 
+a {
+    text-decoration: none;
+    font-family: Verdana;
+}
+
 .wrapper {
     display: flex;
     position: relative;
@@ -48,4 +53,31 @@ body {
 
 .wrapper .sidebar ul li:hover a{
     color: #fff;
+}
+main {
+    display: flex;
+}
+
+header {
+    width: 200px;
+    flex: 0 0 200px;
+}
+
+section {
+    width: 100%;
+}
+.nav {
+    display: block;
+}
+.nav .nav-item {
+    padding: 10px;
+}
+.text-center {
+    text-align:center;
+}
+
+
+.without-underscore-link {
+    text-decoration: none;
+    font-family: Lucida Sans;
 }

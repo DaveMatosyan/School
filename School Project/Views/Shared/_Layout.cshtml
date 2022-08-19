@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/School_Project.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="./_Layout.cshtml.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SchoolNet</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -40,15 +41,66 @@
                 </div>
             </div>
         </nav>
+    <main>
+        <header>
+            <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="bg-dark">
+                    <div class=" min-vh-100">
+                        <ul class="nav" id="menu">
+                            <li class="nav-item">
+                                <a class="nav-link align-middle px-0" asp-area="" asp-controller="Class" asp-action="AllClasses">
+                                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Classes</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-0 align-middle" asp-area="" asp-controller="Teacher" asp-action="AllTeachers">
+                                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">AllTeachers</span> 
+                                </a>
 
-    </header>
+                            </li>
+                        
+                        </ul>
+                        <hr>
+
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </header>
+        <section>
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </section>
+    </main>
+
+        
+@*        @if (@ViewBag.User!=null)
+    {
+        <div class="wrapper">
+            <div class="sidebar">
+                <ul>
+                        @if (User.IsInRole("Principal"))
+    {
+                    <li><a href="Class/Allclasses"><i class="AllClasses"></i>Classes</a></li>
+                    <li><a href="Teacher/AllTeachers"><i class="AllTeachers"></i>Teachers</a></li>
+                    <li><a href="Teacher/AddTeacher"><i class="AddTeacher"></i>AddTeacher</a></li>
+
+    }
+                            @if (User.IsInRole("Teacher") || User.IsInRole("Student"))
+    {
+                    <li><a href="Schedule/WeekTimetable"><i class="WeekTimetable"></i>WeekTimetable</a></li>
+    }
+                </ul>
+            </div>
+        </div>
+    }*@
 
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

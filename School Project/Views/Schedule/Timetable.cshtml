@@ -3,73 +3,75 @@
 @{
     ViewData["Title"] = "Timetable";
 }
+<div class="col py-3">
 
-<h1>Timetable</h1>
+    <h1>Timetable</h1>
 
-                @if(User.IsInRole("Principal"))
-{
-                <p>
-    <a asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">Create New Schedule</a>
-</p>
-}
+                    @if(User.IsInRole("Principal"))
+    {
+                    <p>
+        <a asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">Create New Schedule</a>
+    </p>
+    }
 
-<table class="table">
-    <thead>
-        <tr>
+    <table class="table">
+        <thead>
+            <tr>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Hour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-                @if(!User.IsInRole("Teacher"))
-{
-            <th>
-                @Html.DisplayNameFor(model => model.Teacher)
-            </th>
-}
-                @if(User.IsInRole("Teacher"))
-{
-            <th>
-                @Html.DisplayNameFor(model => model.Class.Class1)
-            </th>
-}
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Hour)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                    @if(!User.IsInRole("Teacher"))
+    {
+                <th>
+                    @Html.DisplayNameFor(model => model.Teacher)
+                </th>
+    }
+                    @if(User.IsInRole("Teacher"))
+    {
+                <th>
+                    @Html.DisplayNameFor(model => model.Class.Class1)
+                </th>
+    }
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Hour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-                @if(!User.IsInRole("Teacher"))
-{
-            <th>
-                @item.Teacher.FirstName @item.Teacher.LastName
-            </th>
-}
-                @if(User.IsInRole("Teacher"))
-{
-            <th>
-                @Html.DisplayFor(modelItem => item.Class.Class1)
-            </th>
-}
-
-                @if(User.IsInRole("Principal"))
-{
                 <td>
-                <a asp-action="Delete" asp-route-id="@item.Id" asp-route-index="@ViewBag.index" asp-route-ClassId="@ViewBag.ClassId">Delete</a>
-            </td>
-}
+                    @Html.DisplayFor(modelItem => item.Hour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                    @if(!User.IsInRole("Teacher"))
+    {
+                <th>
+                    @item.Teacher.FirstName @item.Teacher.LastName
+                </th>
+    }
+                    @if(User.IsInRole("Teacher"))
+    {
+                <th>
+                    @Html.DisplayFor(modelItem => item.Class.Class1)
+                </th>
+    }
+
+                    @if(User.IsInRole("Principal"))
+    {
+                    <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id" asp-route-index="@ViewBag.index" asp-route-ClassId="@ViewBag.ClassId">Delete</a>
+                </td>
+    }
             
 
-        </tr>
-}
-    </tbody>
-</table>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

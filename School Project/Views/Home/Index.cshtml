@@ -1,28 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
     <link rel="stylesheet" href="~/css/site.css" />
-
-        @if (@ViewBag.User!=null)
-    {
-        <div class="wrapper">
-            <div class="sidebar">
-                <ul>
-                        @if (User.IsInRole("Principal"))
-    {
-                    <li><a href="Class/Allclasses"><i class="AllClasses"></i>Classes</a></li>
-                    <li><a href="Teacher/AllTeachers"><i class="AllTeachers"></i>Teachers</a></li>
-                    <li><a href="Teacher/AddTeacher"><i class="AddTeacher"></i>AddTeacher</a></li>
-
-    }
-                            @if (User.IsInRole("Teacher") || User.IsInRole("Student"))
-    {
-                    <li><a href="Schedule/WeekTimetable"><i class="WeekTimetable"></i>WeekTimetable</a></li>
-    }
-                </ul>
-            </div>
-        </div>
-    }
 
 
 <div class="text-center">
