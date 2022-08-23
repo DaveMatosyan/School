@@ -20,9 +20,6 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
 
                         @if(!User.Identity.IsAuthenticated) {
                             <li class="nav-item">
@@ -42,33 +39,52 @@
             </div>
         </nav>
     <main>
-        <header>
-            <div class="container-fluid">
-            <div class="row flex-nowrap">
-                <div class="bg-dark">
-                    <div class=" min-vh-100">
-                        <ul class="nav" id="menu">
-                            <li class="nav-item">
-                                <a class="nav-link align-middle px-0" asp-area="" asp-controller="Class" asp-action="AllClasses">
-                                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Classes</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-0 align-middle" asp-area="" asp-controller="Teacher" asp-action="AllTeachers">
-                                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">AllTeachers</span> 
-                                </a>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <header>
 
-                            </li>
-                        
-                        </ul>
-                        <hr>
+                <div class="container-fluid">
+                    <div class="row flex-nowrap">
+                        <div class="bg-dark">
+                            <div class="min-vh-100">
+                                <ul class="nav" id="menu">
+                                    @if (User.IsInRole("Principal"))
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link align-middle px-0" asp-area="" asp-controller="Class" asp-action="AllClasses">
+                                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Classes</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-0 align-middle" asp-area="" asp-controller="Teacher" asp-action="AllTeachers">
+                                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">AllTeachers</span> 
+                                            </a>
+
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link align-middle px-0" asp-area="" asp-controller="Schedule" asp-action="WeekTimetable">
+                                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Timetable</span>
+                                            </a>
+                                        </li>
+                                    }
+
+
+
+                                </ul>
+                                <hr>
+
+                            </div>
+                        </div>
 
                     </div>
                 </div>
 
-            </div>
-            </div>
-        </header>
+
+            </header>
+        }
         <section>
             <div class="container">
                 <main role="main" class="pb-3">
@@ -79,27 +95,6 @@
     </main>
 
         
-@*        @if (@ViewBag.User!=null)
-    {
-        <div class="wrapper">
-            <div class="sidebar">
-                <ul>
-                        @if (User.IsInRole("Principal"))
-    {
-                    <li><a href="Class/Allclasses"><i class="AllClasses"></i>Classes</a></li>
-                    <li><a href="Teacher/AllTeachers"><i class="AllTeachers"></i>Teachers</a></li>
-                    <li><a href="Teacher/AddTeacher"><i class="AddTeacher"></i>AddTeacher</a></li>
-
-    }
-                            @if (User.IsInRole("Teacher") || User.IsInRole("Student"))
-    {
-                    <li><a href="Schedule/WeekTimetable"><i class="WeekTimetable"></i>WeekTimetable</a></li>
-    }
-                </ul>
-            </div>
-        </div>
-    }*@
-
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

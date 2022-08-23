@@ -4,48 +4,64 @@
     ViewData["Title"] = "Signup";
 }
 
-<h1>Signup</h1>
+<!-- Section: Design Block -->
+<section class="text-center">
+  <!-- Background image -->
+  <div class="p-5 bg-image" style="
+        background-image: url('https://sbooks.net/wp-content/uploads/2021/10/old-book-flying-letters-magic-light-background-bookshelf-library-ancient-books-as-symbol-knowledge-history-218640948.jpg');
+        height: 300px;
+        "></div>
+  <!-- Background image -->
 
-<h4>Student</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Signup">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" type="password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClassId" class="control-label"></label>
-                <select name="ClassId" id="ClassId">
-                    @{
-                        foreach(Class a in ViewBag.Clases) {
-                            <option value="@a.Id">@a.Class1</option>
-                        }
-                    }
-                </select>
+  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -200px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+    <div class="card-body py-5 px-md-5">
 
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Sign up now</h2>
+          <form asp-action="Signup" method="post">
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <input type="text" asp-for="FirstName" class="form-control" />
+                  <label class="form-label" >First name</label>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <input type="text" asp-for="LastName" class="form-control" />
+                  <label class="form-label" >Last name</label>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="email" asp-for="Username" class="form-control" />
+              <label class="form-label" >Username</label>
             </div>
-        </form>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <input type="password" asp-for="Password" class="form-control" />
+              <label class="form-label" >Password</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">
+              Sign up
+            </button>
+
+
+          </form>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
+<!-- Section: Design Block -->

@@ -4,6 +4,7 @@ using School_Project.Services;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Principal;
+using Microsoft.AspNetCore.Authorization;
 
 namespace School_Project.Controllers
 {
@@ -11,10 +12,18 @@ namespace School_Project.Controllers
     {
         public IActionResult LogIn()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return Redirect("/");
+            }
             return View();
         }
         public IActionResult SignUp()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return Redirect("/");
+            }
             var classes = ClassServices.GetAllClasses();
             ViewBag.Clases = classes;
             return View();
@@ -22,6 +31,10 @@ namespace School_Project.Controllers
         [HttpPost]
         public async Task<IActionResult> LogInAsync(LoginFormModel credentials)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return Redirect("/");
+            }
             if (credentials.Username == null || credentials.Password == null)
             {
                 return View();
@@ -50,6 +63,10 @@ namespace School_Project.Controllers
         [HttpPost]
         public IActionResult Signup(User user)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return Redirect("/");
+            }
             if (UserServices.isUsernameExist(user.Username))
             {
                 return RedirectToAction("SignUp");

@@ -16,6 +16,10 @@ namespace School_Project.Controllers
 
         public IActionResult Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Redirect("Auth/Login");
+            }
             int UserId = Convert.ToInt32(User.Identity.Name);
             ViewBag.User = UserServices.GetUserById(UserId);
             return View();

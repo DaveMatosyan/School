@@ -5,14 +5,9 @@
     <link rel="stylesheet" href="~/css/site.css" />
 
 
+
 <div class="text-center">
-    @if (User.Identity.IsAuthenticated)
-    {
-        <h1 class="display-4">Welcome dear @ViewBag.User.FirstName</h1>
-    } else
-    {
-        <h1 class="display-4">Welcome</h1>
-        <h2>@Html.RouteLink("LogIn", new {controller = "Auth", action = "LogIn"})</h2>
-        <h2>@Html.RouteLink("SignUp", new {controller = "Auth", action = "SignUp"})</h2>
-    }
+
+     <h1 class="display-4">Welcome dear @ViewBag.User.FirstName</h1>
+
 </div>
