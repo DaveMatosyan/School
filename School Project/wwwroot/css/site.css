@@ -13,10 +13,6 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 20px;
-}
-
 a {
     text-decoration: none;
     font-family: Verdana;
@@ -68,7 +64,16 @@ section {
 .h-custom {
     height: calc(100% - 73px);
 }
-
+.main {
+    min-height: calc(100vh - 57px);
+    width: 100%;
+}
+.pt-80{
+    padding-top: 80px;
+}
+.bgc {
+    background-color: #eee;
+}
 @media (max-width: 450px) {
     .h-custom {
         height: 100%;

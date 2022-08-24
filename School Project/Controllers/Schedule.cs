@@ -60,9 +60,14 @@ namespace School_Project.Controllers
             }
             return View();
         }
-        public IActionResult Create(int ClassId)
+        public IActionResult Create(int ClassId, int DayId, int Hour)
         {
             ViewBag.ClassId = ClassId;
+            ViewBag.DayId = DayId;
+            ViewBag.Hour = Hour;
+
+            ViewBag.Teachers = TeacherServices.GetTeachers();
+
             return View();
         }
         [HttpPost]

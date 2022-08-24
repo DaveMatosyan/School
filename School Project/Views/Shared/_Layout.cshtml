@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SchoolNet</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Sidebar.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/School_Project.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="./_Layout.cshtml.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+
      <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SchoolNet</a>
@@ -31,67 +32,58 @@
                         }else
                         {
                             <li class="nav-item">
-    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut">Logout</a>
                             </li>
                         }
                     </ul>
                 </div>
             </div>
         </nav>
-    <main>
+    <main class="main">
         @if (User.Identity.IsAuthenticated)
         {
-            <header>
-
+            <header class="bg-dark header">
                 <div class="container-fluid">
+
                     <div class="row flex-nowrap">
-                        <div class="bg-dark">
-                            <div class="min-vh-100">
-                                <ul class="nav" id="menu">
-                                    @if (User.IsInRole("Principal"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link align-middle px-0" asp-area="" asp-controller="Class" asp-action="AllClasses">
-                                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Classes</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link px-0 align-middle" asp-area="" asp-controller="Teacher" asp-action="AllTeachers">
-                                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">AllTeachers</span> 
-                                            </a>
-
-                                        </li>
-                                    }
-                                    else
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link align-middle px-0" asp-area="" asp-controller="Schedule" asp-action="WeekTimetable">
-                                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Timetable</span>
-                                            </a>
-                                        </li>
-                                    }
-
+                        
+                        
+                            <ul class="nav" id="menu">
+                                @if (User.IsInRole("Principal"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link align-middle px-0" asp-area="" asp-controller="Class" asp-action="AllClasses">
+                                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Classes</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-0 align-middle" asp-area="" asp-controller="Teacher" asp-action="AllTeachers">
+                                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Teachers</span>
+                                        </a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link align-middle px-0" asp-area="" asp-controller="Schedule" asp-action="WeekTimetable">
+                                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Timetable</span>
+                                        </a>
+                                    </li>
+                                }
 
 
-                                </ul>
-                                <hr>
 
-                            </div>
-                        </div>
+                            </ul>
+                           
 
                     </div>
                 </div>
 
-
             </header>
         }
-        <section>
-            <div class="container">
-                <main role="main" class="pb-3">
-                    @RenderBody()
-                </main>
-            </div>
-        </section>
+        <main class="main" role="main">
+            @RenderBody()
+         </main>
     </main>
 
         

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4NBYRtWYqbx8Lk7jiwMoRuiSYyE1bEMTZnuggNe72i0=",
+  "Hash": "pgDlgqX7LY5Q0d1aEAKSwdluNPglaiuqI950d7tAsgg=",
   "Source": "School Project",
   "BasePath": "_content/School Project",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\School Project.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\css\\Sidebar.css",
+      "SourceId": "School Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\",
+      "BasePath": "_content/School Project",
+      "RelativePath": "css/Sidebar.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Sidebar.css"
+    },
+    {
       "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\css\\site.css",
       "SourceId": "School Project",
       "SourceType": "Discovered",
@@ -68,12 +85,12 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\css\\weekdays.css",
+      "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\css\\table.css",
       "SourceId": "School Project",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\",
       "BasePath": "_content/School Project",
-      "RelativePath": "css/weekdays.css",
+      "RelativePath": "css/table.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -82,7 +99,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\weekdays.css"
+      "OriginalItemSpec": "wwwroot\\css\\table.css"
     },
     {
       "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\favicon.ico",

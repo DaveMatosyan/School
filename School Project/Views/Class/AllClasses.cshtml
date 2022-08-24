@@ -5,35 +5,41 @@
 }
 
 
-<div class="col py-3">
-<h1>AllClasses</h1>
+ <section class="d-flex pt-80 justify-content-center">
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col">
+        <h1>Classes</h1>
 
-    <p>
-        <a asp-action="AddClass">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Class1)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Class1)
-                </td>
-                <td>
-                    <a asp-controller="Schedule" asp-action="WeekTimetable" asp-route-ClassId="@item.Id">Schedules</a>
-                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-                </td>
-            </tr>
-    }
-        </tbody>
-    </table>
+            <p>
+                <a class="btn btn-success" asp-action="AddClass">Create New</a>
+            </p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Class
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+            @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Class1)
+                        </td>
+                        <td>
+                            <a asp-controller="Schedule" asp-action="WeekTimetable" asp-route-ClassId="@item.Id">Schedules</a>
+                            @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                        </td>
+                    </tr>
+            }
+                </tbody>
+            </table>
 
+        </div>
+    </div>
 </div>
+</section>
 

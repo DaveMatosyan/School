@@ -4,19 +4,21 @@
     ViewData["Title"] = "Timetable";
 }
 <link rel="stylesheet" href="~/css/site.css" />
-
-<div class="col py-3">
+ <section class="d-flex pt-80 justify-content-center">
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+<div class="col">
 
 <h1>Timetable</h1>
 
                 @if(User.IsInRole("Principal"))
 {
                 <p>
-    <a class="without-underscore-link" asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">Create New</a>
+    <a class="btn btn-success without-underscore-link" asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">Create New</a>
 </p>
 }
 
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>
@@ -97,12 +99,12 @@
         {
 <tr>
     <td>
-        WeekDay
+        #
     </td>
     @for(int i = 1; i <= 5; i++) {
 
         <td>
-                <a asp-action="Timetable" asp-route-index="@i" asp-route-ClassId="@ViewBag.ClassId">Details</a>
+                <a asp-action="Timetable" asp-route-index="@i" asp-route-ClassId="@ViewBag.ClassId">More</a>
         </td>
 }
 </tr>
@@ -113,3 +115,6 @@
     </tbody>
 </table>
 </div>
+</div>
+</div>
+</section>
