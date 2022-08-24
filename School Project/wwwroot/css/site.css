@@ -74,6 +74,26 @@ section {
 .bgc {
     background-color: #eee;
 }
+.show-modal {
+    display: block;
+}
+.show-modal + .modal-layer {
+    display: block;
+    pointer-events: auto;
+}
+.modal-layer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background:#000;
+    opacity: .6;
+    pointer-events:none;
+}
 @media (max-width: 450px) {
     .h-custom {
         height: 100%;
