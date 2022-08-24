@@ -73,17 +73,19 @@ namespace School_Project.Controllers
         [HttpPost]
         public IActionResult Create(int ClassId, School_Project.Models.AddSchedule Credentials)
         {
+            int test = ClassId;
             User user = UserServices.GetUserByUsername(Credentials.TeacherUsername);
             if (user != null)
             {
                 ScheduleServices.PostSchedule(Credentials, ClassId, user.Id, user.Profession);
             }
-            return RedirectToAction("Timetable", new { index = Credentials.DayId, ClassId = ClassId });
+            return RedirectToAction("WeekTimetable", new { ClassId = ClassId });
         }
         public IActionResult Delete(int id, int index, int ClassId)
         {
             ScheduleServices.DeleteSchedule(id);
             return RedirectToAction("Timetable", new { index = index, ClassId = ClassId });
         }
+
     }
 }

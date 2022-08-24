@@ -42,7 +42,7 @@
     <main class="main">
         @if (User.Identity.IsAuthenticated)
         {
-            <header class="bg-dark header">
+            <header class="sidebar-background-color header">
                 <div class="container-fluid">
 
                     <div class="row flex-nowrap">
@@ -52,12 +52,12 @@
                                 @if (User.IsInRole("Principal"))
                                 {
                                     <li class="nav-item">
-                                        <a class="nav-link align-middle px-0" asp-area="" asp-controller="Class" asp-action="AllClasses">
+                                        <a class="nav-link align-middle text-light" asp-area="" asp-controller="Class" asp-action="AllClasses">
                                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Classes</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-0 align-middle" asp-area="" asp-controller="Teacher" asp-action="AllTeachers">
+                                        <a class="nav-link align-middle text-light" asp-area="" asp-controller="Teacher" asp-action="AllTeachers">
                                             <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Teachers</span>
                                         </a>
                                     </li>
@@ -65,7 +65,7 @@
                                 else
                                 {
                                     <li class="nav-item">
-                                        <a class="nav-link align-middle px-0" asp-area="" asp-controller="Schedule" asp-action="WeekTimetable">
+                                        <a class="nav-link align-middle text-light" asp-area="" asp-controller="Schedule" asp-action="WeekTimetable">
                                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Timetable</span>
                                         </a>
                                     </li>

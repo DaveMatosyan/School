@@ -6,7 +6,7 @@
  <section class="d-flex pt-80 justify-content-center">
   <div class="container">
     <div class="row d-flex justify-content-center align-items-center">
-<div class="col py-3">
+<div class="col py-3 All-Views">
 
 <h1>Teachers</h1>
 
@@ -47,7 +47,7 @@
                 @Html.DisplayFor(modelItem => item.Profession)
             </td>
             <td>
-                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-primary teacherModalButton" data-toggle="modal" data-target="#exampleModal">Edit</a>
                 <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
@@ -57,14 +57,12 @@
 </div>
 </div>
 </div>
-<button type="button" class="btn btn-primary" data-toggle="modal" id="teacherModalButton" data-target="#exampleModal">
-  Launch demo modal
-</button>
+
 <div class="modal" id="teacherModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">Teacher</h5>
         <button type="button" class="close closeTeacherModal" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -72,10 +70,20 @@
       <div class="modal-body">
        <form>
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <label for="exampleInputEmail1">First Name</label>
+            <input type="text" class="form-control" value="" id="First Name" aria-describedby="emailHelp" placeholder="First Name">
           </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Last Name</label>
+            <input type="text" class="form-control" value="" id="Last Name" aria-describedby="emailHelp" placeholder="Last Name">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input type="text" class="form-control" value="" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+          </div>
+
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
@@ -90,5 +98,5 @@
     </div>
   </div>
 </div>
-<div  class="modal-layer"></div>
+<div  class="modal-layer closeTeacherModal"></div>
 </section>

@@ -74,6 +74,9 @@ section {
 .bgc {
     background-color: #eee;
 }
+.sidebar-background-color {
+    background-color: #198754
+}
 .show-modal {
     display: block;
 }
@@ -98,4 +101,8 @@ section {
     .h-custom {
         height: 100%;
     }
+}
+.All-Views {
+    display: flex;
+    flex-wrap: wrap;
 }

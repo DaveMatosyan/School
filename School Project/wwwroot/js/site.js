@@ -3,14 +3,18 @@
 
 // Write your JavaScript code.
 
-const teacherModalButton = document.getElementById('teacherModalButton');
+const teacherModalButton = document.querySelectorAll('.teacherModalButton');
 const teacherModal = document.getElementById('teacherModal');
 const closeTeacherModal = document.querySelectorAll('.closeTeacherModal');
 console.log(closeTeacherModal);
-teacherModalButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    teacherModal.classList.add('show-modal');
+
+teacherModalButton.forEach(item => {
+    item.addEventListener('click', (event) => {
+        event.preventDefault();
+        teacherModal.classList.add('show-modal');
+    })
 })
+
 closeTeacherModal.forEach(item => {
     item.addEventListener('click', (event) => {
         event.preventDefault();
