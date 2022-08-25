@@ -81,6 +81,24 @@ namespace School_Project.Controllers
             }
             return RedirectToAction("WeekTimetable", new { ClassId = ClassId });
         }
+        public IActionResult Edit(int DayId, int Hour, int ClassId)
+        {
+            ViewBag.ClassId = ClassId;
+            ViewBag.Teachers = TeacherServices.GetTeachers();
+            Models.Schedule schedule = ScheduleServices.GetScedule(ClassId, DayId, Hour);
+            return View(schedule);
+        }
+        [HttpPost]
+        public IActionResult Edit(int ClassId, int SId, string STitle, Models.Schedule schedule)
+        {
+            schedule.Id = SId;
+            string Profession = UserServices.GetUserById(schedule.TeacherId).Profession;
+            schedule.Title = Profession + "Hour";
+            ScheduleServices.UpdateSchedule(schedule);
+            return RedirectToAction("WeekTimetable", new { ClassId = ClassId });
+
+        }
+
         public IActionResult Delete(int id, int index, int ClassId)
         {
             ScheduleServices.DeleteSchedule(id);

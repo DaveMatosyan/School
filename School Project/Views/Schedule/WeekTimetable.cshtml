@@ -7,15 +7,14 @@
  <section class="d-flex pt-80 justify-content-center">
   <div class="container">
     <div class="row d-flex justify-content-center align-items-center">
+        <div class="overflow-auto">
 <div class="col All-Views">
 
 <h1>Timetable</h1>
 
                 @if(User.IsInRole("Principal"))
 {
-                <p>
-    <a class="btn btn-success without-underscore-link" asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">Create New</a>
-</p>
+
 }
 
 <table class="table table-hover">
@@ -66,7 +65,7 @@
                                     {
                                         @item.Title
                                     } else {
-                                        <a class="without-underscore-link" asp-controller="Schedule" asp-action="Edit" asp-route-DayId="@j" asp-route-Hour="@i">@item.Title</a>
+                                        <a class="without-underscore-link" asp-controller="Schedule" asp-action="Edit" asp-route-DayId="@j" asp-route-ClassId="@ViewBag.ClassId" asp-route-Hour="@i">@item.Title</a>
                                     }
                             </td>
                     }
@@ -114,6 +113,10 @@
 
     </tbody>
 </table>
+<p>
+    <a class="btn btn-success without-underscore-link" asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">Create Schedule</a>
+</p>
+</div>
 </div>
 </div>
 </div>

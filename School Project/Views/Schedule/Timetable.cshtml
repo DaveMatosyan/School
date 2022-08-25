@@ -6,16 +6,12 @@
  <section class="d-flex pt-80 justify-content-center">
   <div class="container">
     <div class="row d-flex justify-content-center align-items-center">
-<div class="col All-Views">
+    @*<a asp-action="WeekTimetable" asp-route-ClassId="@ViewBag.ClassId" type="button" class="btn btn-secondary w-auto fixed-top">Go back to week timetable</a>*@
 
+<div class="col All-Views overflow-auto">
     <h1>Timetable</h1>
 
-                    @if(User.IsInRole("Principal"))
-    {
-                    <p>
-        <a class="btn btn-success" asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">Create New Schedule</a>
-    </p>
-    }
+
 
     <table class="table table-hover">
         <thead>
@@ -67,8 +63,9 @@
 
                     @if(User.IsInRole("Principal"))
     {
-                    <td>
+                <td>
                     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id" asp-route-index="@ViewBag.index" asp-route-ClassId="@ViewBag.ClassId">Delete</a>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-DayId="@ViewBag.Index" asp-route-Hour="@item.Hour" asp-route-ClassId="@ViewBag.ClassId">Edit</a>
                 </td>
     }
             
@@ -77,6 +74,12 @@
     }
         </tbody>
     </table>
+                    @if(User.IsInRole("Principal"))
+    {
+    <p>
+        <a class="btn btn-success" asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">New Schedule</a>
+    </p>
+    }
 </div>
 </div>
 </div>

@@ -5,6 +5,14 @@ namespace School_Project.Services
 {
     public class ScheduleServices
     {
+        public static Schedule GetScedule(int? ClassId, int DayId, int Hour)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                Schedule schedule = db.Schedules.Where(b => b.ClassId == ClassId && b.DayId == DayId && b.Hour == Hour).Include("Teacher").FirstOrDefault<Schedule>(); ;
+                return schedule;
+            }
+        }
         public static List<Schedule> GetScedulesByClassId(int? ClassId)
         {
             using (SchoolContext db = new SchoolContext())
@@ -52,6 +60,16 @@ namespace School_Project.Services
                     db.Add(schedule);
                     db.SaveChanges();
                 }
+
+            }
+        }
+        
+        public static void UpdateSchedule(Schedule schedule)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                db.Update(schedule);
+                db.SaveChanges();
 
             }
         }

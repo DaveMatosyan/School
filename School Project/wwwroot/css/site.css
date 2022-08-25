@@ -27,6 +27,19 @@ header {
     max-width: 200px;
     flex: 0 0 25%;
 }
+@media screen and (max-width: 576px){
+    .main-header .navbar-collapse {
+        position: absolute;
+        top: 49px;
+        background: white;
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        box-shadow: 0px 7px 6px 0px #0000001a;
+    }
+}
 
 section {
     width: 100%;
@@ -71,6 +84,9 @@ section {
 .pt-80{
     padding-top: 80px;
 }
+.pt-30 {
+    padding-top: 30px;
+}
 .bgc {
     background-color: #eee;
 }
@@ -80,9 +96,12 @@ section {
 .show-modal {
     display: block;
 }
-.show-modal + .modal-layer {
+.show-modal .modal-layer {
     display: block;
     pointer-events: auto;
+}
+.modal-dialog {
+    z-index: 2;
 }
 .modal-layer {
     display: none;
@@ -96,6 +115,7 @@ section {
     background:#000;
     opacity: .6;
     pointer-events:none;
+    z-index: 1;
 }
 @media (max-width: 450px) {
     .h-custom {
@@ -105,4 +125,8 @@ section {
 .All-Views {
     display: flex;
     flex-wrap: wrap;
+}
+
+.mr-2p {
+    margin-right: 2%;
 }
