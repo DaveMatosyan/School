@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using School_Project.Services;
 using School_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace School_Project.Controllers
 {
+    [Authorize(Roles = "Principal")]
     public class Class : Controller
     {
         public IActionResult AddClass()

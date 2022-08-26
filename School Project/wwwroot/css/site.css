@@ -59,6 +59,11 @@ section {
     display: block;
 }
 
+.fool-size-img {
+    max-height: calc(100vh - 120px);
+    width: auto;
+    margin-top: -4vh;
+}
 
 .without-underscore-link {
     text-decoration: none;

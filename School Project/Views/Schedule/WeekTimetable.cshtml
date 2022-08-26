@@ -113,9 +113,13 @@
 
     </tbody>
 </table>
+@if(User.IsInRole("Principal"))
+{
 <p>
+
     <a class="btn btn-success without-underscore-link" asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">Create Schedule</a>
 </p>
+}
 </div>
 </div>
 </div>

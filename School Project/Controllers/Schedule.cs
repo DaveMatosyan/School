@@ -60,6 +60,7 @@ namespace School_Project.Controllers
             }
             return View();
         }
+        [Authorize(Roles = "Principal")]
         public IActionResult Create(int ClassId, int DayId, int Hour)
         {
             ViewBag.ClassId = ClassId;
@@ -70,6 +71,7 @@ namespace School_Project.Controllers
 
             return View();
         }
+        [Authorize(Roles = "Principal")]
         [HttpPost]
         public IActionResult Create(int ClassId, School_Project.Models.AddSchedule Credentials)
         {
@@ -81,6 +83,7 @@ namespace School_Project.Controllers
             }
             return RedirectToAction("WeekTimetable", new { ClassId = ClassId });
         }
+        [Authorize(Roles = "Principal")]
         public IActionResult Edit(int DayId, int Hour, int ClassId)
         {
             ViewBag.ClassId = ClassId;
@@ -88,6 +91,7 @@ namespace School_Project.Controllers
             Models.Schedule schedule = ScheduleServices.GetScedule(ClassId, DayId, Hour);
             return View(schedule);
         }
+        [Authorize(Roles = "Principal")]
         [HttpPost]
         public IActionResult Edit(int ClassId, int SId, string STitle, Models.Schedule schedule)
         {
@@ -98,7 +102,7 @@ namespace School_Project.Controllers
             return RedirectToAction("WeekTimetable", new { ClassId = ClassId });
 
         }
-
+        [Authorize(Roles = "Principal")]
         public IActionResult Delete(int id, int index, int ClassId)
         {
             ScheduleServices.DeleteSchedule(id);
