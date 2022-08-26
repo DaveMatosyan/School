@@ -12,26 +12,26 @@
 </head>
 <body>
 <nav class="main-header navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
-    <div class="container-fluid mr-2p">
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SchoolNet</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container-fluid mr-2p justify-content-lg-start">
+        <button type="button" id="sidebarCollapse" class="btn ">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
-            <ul class="navbar-nav ml-auto">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SchoolNet</a>
+       
+        <div class="ml-auto">
+            <ul class="navbar-nav flex-row d-flex">
 
                 @if(!User.Identity.IsAuthenticated) {
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="LogIn">LogIn</a>
+                    <li class="nav-item p-1 m-1">
+                        <a class="nav-link p-0 text-dark" asp-area="" asp-controller="Auth" asp-action="LogIn">LogIn</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">SignUp</a>
+                    <li class="nav-item p-1 m-1">
+                        <a class="nav-link p-0 text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">SignUp</a>
                     </li>
                 }else
                 {
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut">Logout</a>
+                    <li class="nav-item p-1 m-1">
+                        <a class="nav-link p-0 text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut">Logout</a>
                     </li>
                 }
             </ul>
@@ -42,25 +42,22 @@
         <main class="main">
         @if (User.Identity.IsAuthenticated)
         {
-            <header class="header" id="sidebar">
+            <header class="header closed-mob" id="sidebar">
                 <!-- Sidebar -->
                 <nav>
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
-                <i class="fas fa-align-left"></i>
-                <span>Menu</span>
-            </button>
+            
 
                     <ul class="list-unstyled components">
                         @if (User.IsInRole("Principal"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link align-middle text-light" asp-area="" asp-controller="Class" asp-action="AllClasses">
-                                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Classes</span>
+                                    <i class="fs-4 bi-house"></i> <span class="ms-1 ">Classes</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link align-middle text-light" asp-area="" asp-controller="Teacher" asp-action="AllTeachers">
-                                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Teachers</span>
+                                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 ">Teachers</span>
                                 </a>
                             </li>
                         }
@@ -68,7 +65,7 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link align-middle text-light" asp-area="" asp-controller="Schedule" asp-action="WeekTimetable">
-                                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Timetable</span>
+                                    <i class="fs-4 bi-house"></i> <span class="ms-1 ">Timetable</span>
                                 </a>
                             </li>
                         }

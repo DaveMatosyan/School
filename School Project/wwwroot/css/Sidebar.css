@@ -9,13 +9,10 @@
 }
 
 
-#sidebar.active {
-    margin-left: -200px;
-}
 #sidebar {
     min-width: 200px;
     max-width: 200px;
-    min-height: calc(100vh - 57px);
+    min-height: calc(100vh - 49px);
 }
 a[data-toggle="collapse"] {
     position: relative;
@@ -33,37 +30,31 @@ a[data-toggle="collapse"] {
 }
 
 @media (max-width: 576px) {
+    .closed-mob {
+        transform: translateX(-200px);
+    }
     #sidebar {
-        margin-left: -200px;
+        position: absolute;
+        top: 49px;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-200px);
     }
 
-        #sidebar.active {
-            margin-left: 0;
+    #sidebar.active {
+        transform: translateX(0px);
 
-        }
-        #sidebarCollapse.closed {
-            left: 200px;
-        }
-        #sidebarCollapse {
-            display: block;
-            position: absolute;
-            left: 0px;
-            margin: 10px;
-        }
+    }
 
+    #sidebarCollapse {
+        display: block;
+        padding: 4px;
+        margin-right:4px;
+    }
+    .closed-mob {
+        transform: translateX(-200px);
+    }
 }
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
-}
-
-
-
-
-
 #sidebar {
     /* don't forget to add all the previously mentioned styles here too */
     background: #198754;
@@ -89,11 +80,13 @@ body {
         padding: 10px;
         font-size: 1.1em;
         display: block;
+        color: white;
+        opacity: 0.7;
+        transition: opacity .3s ease-out;
     }
 
         #sidebar ul li a:hover {
-            color: #7386D5;
-            background: #fff;
+            opacity: 1;
         }
 
     #sidebar ul li.active > a, a[aria-expanded="true"] {
