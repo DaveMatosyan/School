@@ -131,6 +131,12 @@ section {
         height: 100%;
     }
 }
+.back-action  svg{
+    margin-right:6px;
+}
+.back-action .btn{
+     margin-right: 14px;
+}
 .All-Views {
     display: flex;
     flex-wrap: wrap;

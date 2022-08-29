@@ -38,7 +38,7 @@ namespace School_Project.Controllers
         {
             ViewBag.index = index;
             ViewBag.ClassId = ClassId;
-
+            ViewBag.WeekDay = ScheduleServices.GetWeekdayByDayId(index);
             IPrincipal iPrincipalUser = User;
             int UserId = Convert.ToInt32(User.Identity.Name);
             if (User.IsInRole("Student"))
