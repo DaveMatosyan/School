@@ -78,5 +78,30 @@ namespace School_Project.Services
                 return user;
             }
         }
+        public static void UpdateUser(User OldUser, User ChangedUser)
+        {
+            ChangedUser.Id = OldUser.Id;
+            ChangedUser.Role = OldUser.Role;
+
+            if (ChangedUser.Password != null)
+            {
+                ChangedUser.Password = HashServices.HashPassword(ChangedUser.Password);
+            } 
+            else
+            {
+                ChangedUser.Password = OldUser.Password;
+            }
+            if(OldUser.Profession == "Principal")
+            {
+                ChangedUser.Profession = "Principal";
+            }
+            
+            using (SchoolContext db = new SchoolContext())
+            {
+                db.Update(ChangedUser);
+                db.SaveChanges();
+
+            }
+        }
     }
 }

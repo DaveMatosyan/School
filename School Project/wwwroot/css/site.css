@@ -26,6 +26,7 @@ header {
     width: 25%;
     max-width: 200px;
     flex: 0 0 25%;
+    z-index: 2;
 }
 
 @media screen and (max-width: 576px){
@@ -59,10 +60,8 @@ section {
     display: block;
 }
 
-.fool-size-img {
-    max-height: calc(100vh - 120px);
-    width: auto;
-    margin-top: -4vh;
+.img-custom {
+    max-height: calc(100vh - 200px);
 }
 
 .without-underscore-link {

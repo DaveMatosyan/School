@@ -42,11 +42,6 @@ namespace School_Project.Controllers
             TeacherServices.Edit(Teacher);
             return RedirectToAction("AllTeachers");
         }
-        public IActionResult Details(int id)
-        {
-            var Teacher = UserServices.GetUserById(id);
-            return View(Teacher);
-        }
         public IActionResult Delete(int id)
         {
             TeacherServices.DeleteTeacher(id);
