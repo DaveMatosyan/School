@@ -57,5 +57,30 @@ namespace School_Project.Services
                 return false;
             }
         }
+
+        public static void DeleteClass(int ClassId)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                var itemsToRemove = db.Schedules.Where(x => x.ClassId == ClassId); //returns a single item.
+                var Class = db.Classes.Find(ClassId);
+                db.Schedules.RemoveRange(itemsToRemove);
+                db.Classes.Remove(Class);
+                db.SaveChanges();
+            }
+        }
+        public static void UpdateClass(Class c)
+        {
+            if(c == null)
+            {
+                return;
+            }
+            using (SchoolContext db = new SchoolContext())
+            {
+                db.Update(c);
+                db.SaveChanges();
+
+            }
+        }
     }
 }

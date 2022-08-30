@@ -1,24 +1,27 @@
-html {
-  font-size: 14px;
+:root {
+    --cyan1: #00322f;
+    --cyan2: #00584f;
+    --cyan3: #008477;
+    --cyan4: #009b8b;
+    --cyan5: #00baa6;
 }
 
-@media (min-width: 768px) {
-  html {
+html {
+    position: relative;
+    min-height: 100%;
     font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
 }
 
 a {
     text-decoration: none;
-    font-family: Verdana;
+    color: var(--cyan5);
+}
+a:hover {
+    text-decoration: none;
+    color: var(--cyan2);
 }
 
-main {
+.main {
     display: flex;
 }
 
@@ -27,21 +30,6 @@ header {
     max-width: 200px;
     flex: 0 0 25%;
     z-index: 2;
-}
-
-@media screen and (max-width: 576px){
-    .main-header .navbar-collapse {
-    /*    position: absolute;
-        top: 49px;
-        background: white;
-        left: 0;
-        right: 0;
-        width: 100%;
-        padding-right: var(--bs-gutter-x,.75rem);
-        padding-left: var(--bs-gutter-x,.75rem);
-        box-shadow: 0px 7px 6px 0px #0000001a;*/
-    }
-   
 }
 
 section {
@@ -126,18 +114,13 @@ section {
 .navbar-brand {
     font-size: 1.2rem;
 }
-@media (max-width: 450px) {
-    .h-custom {
-        height: 100%;
-    }
-}
 .back-action  svg{
     margin-right:6px;
 }
 .back-action .btn{
      margin-right: 14px;
 }
-.All-Views {
+.all-views {
     display: flex;
     flex-wrap: wrap;
 }
@@ -146,4 +129,155 @@ section {
 }
 .mr-2p {
     margin-right: 2%;
+}
+table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+    table tr td, tr th {
+        vertical-align: middle;
+    }
+table thead {
+    background-color: var(--cyan2);
+    color: white;
+}
+table thead tr th {
+    height: 50px;
+   
+}
+table.classes-table tr td{
+    width: 33.333%;
+}
+table.table-with-buttons tr td:last-child{
+    min-width: 150px;
+}
+.btn {
+    border-radius: 27px;
+}
+.btn-primary{
+    background-color: var(--cyan3);
+    border-color: var(--cyan3);
+}
+.moadl .modal-title{
+    margin-top: 0;
+}
+.custom-close-icon {
+   background: transparent;
+   font-size: 2px;
+   opacity: .6;
+   border: none;
+   margin-top: -20px;
+}
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+.header {
+    min-width: 200px;
+    max-width: 200px;
+    min-height: calc(100vh - 57px);
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+#sidebarCollapse {
+    display: none;
+}
+
+.header {
+    /* don't forget to add all the previously mentioned styles here too */
+    background: var(--cyan1);
+    color: #fff;
+    transition: all 0.3s;
+}
+
+    .header .sidebar-header {
+        padding: 20px;
+        background: #6d7fcc;
+    }
+
+    .header ul.components {
+        padding: 20px 20px;
+    }
+
+    .header ul p {
+        color: #fff;
+        padding: 10px;
+    }
+
+    .header ul li a {
+        padding: 10px;
+        font-size: 1.1em;
+        display: block;
+        color: white;
+        opacity: 0.7;
+        transition: opacity .3s ease-out;
+    }
+
+        .header ul li a:hover {
+            opacity: 1;
+        }
+
+    .header ul li.active > a, a[aria-expanded="true"] {
+        color: #fff;
+        background: #6d7fcc;
+    }
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+    .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+        background-color: var(--cyan2);
+        border-color: var(--cyan2);
+    }
+    @media (min-width: 768px) {
+        html {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 450px) {
+        .h-custom {
+            height: 100%;
+        }
+    }
+@media (max-width: 576px) {
+    .closed-mob {
+        transform: translateX(-200px);
+    }
+
+    .header {
+        position: absolute;
+        top: 49px;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-200px);
+    }
+
+        .header.active {
+            transform: translateX(0px);
+        }
+
+    #sidebarCollapse {
+        display: block;
+        padding: 4px;
+        margin-right: 4px;
+    }
+
+    .closed-mob {
+        transform: translateX(-200px);
+    }
 }

@@ -43,10 +43,10 @@
     </div>
 </nav>
 
-        <main class="main">
+        <section class="main">
         @if (User.Identity.IsAuthenticated)
         {
-            <header class="header closed-mob " id="sidebar">
+            <header class="header closed-mob">
                 <!-- Sidebar -->
                 <nav>
             
@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link align-middle text-light" asp-area="" asp-controller="User" asp-action="Edit">
+                            <a class="nav-link align-middle text-light" asp-area="" asp-controller="User" asp-action="Profile">
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 ">Profile</span>
                             </a>
                         </li>
@@ -84,6 +84,14 @@
                             </li>
                         }
 
+                        @if (ViewContext.RouteData.Values.Where(v => v.Key == "action").FirstOrDefault().Value.ToString() == "Profile")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link align-middle text-light" asp-area="" asp-controller="Schedule" asp-action="WeekTimetable">
+                                    <i class="fs-4 bi-house"></i> <span class="ms-1 ">test</span>
+                                </a>
+                            </li>
+                        }
 
 
                     </ul>
@@ -97,7 +105,7 @@
             <main class="main" role="main">
                 @RenderBody()
             </main>
-         </main>
+         </section>
 
 
 

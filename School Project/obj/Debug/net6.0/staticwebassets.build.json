@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pgDlgqX7LY5Q0d1aEAKSwdluNPglaiuqI950d7tAsgg=",
+  "Hash": "P06JvJmT2mx1s73PZJchMyCXHWHHEaI5ljqUUAhAwFM=",
   "Source": "School Project",
   "BasePath": "_content/School Project",
   "Mode": "Default",
@@ -51,23 +51,6 @@
       "OriginalItemSpec": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\School Project.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\css\\Sidebar.css",
-      "SourceId": "School Project",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\",
-      "BasePath": "_content/School Project",
-      "RelativePath": "css/Sidebar.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\Sidebar.css"
-    },
-    {
       "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\css\\site.css",
       "SourceId": "School Project",
       "SourceType": "Discovered",
@@ -83,23 +66,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
-    },
-    {
-      "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\css\\table.css",
-      "SourceId": "School Project",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\",
-      "BasePath": "_content/School Project",
-      "RelativePath": "css/table.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\table.css"
     },
     {
       "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\favicon.ico",

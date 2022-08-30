@@ -7,7 +7,7 @@
   <div class="container">
     <div class="row d-flex justify-content-center align-items-center">
 
-<div class="col All-Views  overflow-auto">
+<div class="col d-b">
     <div class="d-flex align-items-center back-action">
         <a asp-action="WeekTimetable" asp-route-ClassId="@ViewBag.ClassId" type="button" class="btn mr-3 d-flex align-items-center" title="Go back to week timetable">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
@@ -19,8 +19,8 @@
     
 
 
-
-    <table class="table table-hover">
+    <div class="overflow-auto">
+    <table class="table table-hover table-with-buttons">
         <thead>
             <tr>
 
@@ -81,10 +81,12 @@
     }
         </tbody>
     </table>
+    </div>
+
                     @if(User.IsInRole("Principal"))
     {
     <p>
-        <a class="btn btn-success" asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">New Schedule</a>
+        <a class="btn btn-primary" asp-action="Create" asp-route-ClassId="@ViewBag.ClassId">New Schedule</a>
     </p>
     }
 </div>

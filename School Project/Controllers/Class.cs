@@ -31,5 +31,22 @@ namespace School_Project.Controllers
             List<School_Project.Models.Class> list = ClassServices.GetAllClassesInList();
             return View(list);
         }
+        public IActionResult Edit(int Id)
+        {
+            ViewBag.ClassId = Id;
+            Models.Class c = ClassServices.GetClassById(Id);
+            return View(c);
+        }
+        [HttpPost]
+        public IActionResult Edit(Models.Class c)
+        {
+            ClassServices.UpdateClass(c);
+            return RedirectToAction("AllClasses");
+        }
+        public IActionResult Delete(int Id)
+        {
+            ClassServices.DeleteClass(Id);
+            return RedirectToAction("AllClasses");
+        }
     }
 }

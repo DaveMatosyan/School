@@ -8,17 +8,22 @@
  <section class="d-flex pt-80 justify-content-center">
   <div class="container">
     <div class="row d-flex justify-content-center align-items-center">
-        <div class="col All-Views overflow-auto">
+        <div class="col d-b">
         <h1>Classes</h1>
 
-
-            <table class="table table-hover">
+            <div class="overflow-auto">
+            <table class="table table-hover classes-table  table-with-buttons">
                 <thead>
                     <tr>
                         <th>
                             Class
                         </th>
-                        <th></th>
+                        <th>
+                            Timetable
+                        </th>
+                        <th>
+
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,14 +34,18 @@
                         </td>
                         <td>
                             <a asp-controller="Schedule" asp-action="WeekTimetable" asp-route-ClassId="@item.Id">Schedules</a>
-                            @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         </td>
                     </tr>
             }
                 </tbody>
             </table>
+            </div>
             <p class="align-center">
-                <a class="btn btn-success" asp-action="AddClass">Create New</a>
+                <a class="btn btn-primary" asp-action="AddClass">Create New</a>
             </p>
         </div>
     </div>

@@ -103,5 +103,19 @@ namespace School_Project.Services
 
             }
         }
+        
+        public static void DeleteUser(int Id)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                var itemToRemove = db.Users.SingleOrDefault(x => x.Id == Id); //returns a single item.
+
+                if (itemToRemove != null)
+                {
+                    db.Users.Remove(itemToRemove);
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }
