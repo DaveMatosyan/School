@@ -28,7 +28,7 @@ namespace School_Project.Controllers
             return Redirect("/");
         }
         
-        [Authorize(Roles = "Teacher Student")]
+        [Authorize(Roles = "Teacher,Student")]
         public async Task<IActionResult> DeleteAsync()
         {
             int UserId = Convert.ToInt32(User.Identity.Name);

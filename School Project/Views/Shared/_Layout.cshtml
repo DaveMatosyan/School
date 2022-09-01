@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SchoolNet</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/Sidebar.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/School_Project.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="./_Layout.cshtml.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
 <nav class="main-header navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
     <div class="container-fluid mr-2p justify-content-lg-start">
             @if (User.Identity.IsAuthenticated)
             {
-                <button type="button" id="sidebarCollapse" class="btn ">
+                <button type="button" class="btn sidebarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             }
@@ -84,12 +82,11 @@
                             </li>
                         }
 
-                        @if (ViewContext.RouteData.Values.Where(v => v.Key == "action").FirstOrDefault().Value.ToString() == "Profile")
+                        @if (ViewContext.RouteData.Values.Where(v => v.Key == "action").FirstOrDefault().Value.ToString() == "Profile" && !User.IsInRole("Principal"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link align-middle text-light" asp-area="" asp-controller="Schedule" asp-action="WeekTimetable">
-                                    <i class="fs-4 bi-house"></i> <span class="ms-1 ">test</span>
-                                </a>
+                                <a class="btn btn btn-danger teacherModalButton edit position-absolute bottom-3" data-toggle="modal">Delete Account</a>
+
                             </li>
                         }
 

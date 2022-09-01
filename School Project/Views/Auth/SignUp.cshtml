@@ -42,9 +42,9 @@
               </div>
             </div>
 
-            <!-- Email input -->
+            <!-- Username input -->
             <div class="form-outline mb-4">
-              <input type="email" asp-for="Username" class="form-control" />
+              <input type="text" asp-for="Username" class="form-control" />
               <label class="form-label" >Username</label>
             </div>
 
@@ -58,7 +58,7 @@
 
             <div class="form-outline mb-3">
 
-                <select class="form-select">
+                <select class="form-select" asp-for="ClassId">
                     @{
                         foreach(Class a in ViewBag.Clases) {
                             <option value="@a.Id">@a.Class1</option>

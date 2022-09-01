@@ -158,8 +158,13 @@ table.table-with-buttons tr td:last-child{
     background-color: var(--cyan3);
     border-color: var(--cyan3);
 }
-.moadl .modal-title{
+
+.moadl .modal-title {
     margin-top: 0;
+    text-align: center;
+}
+.moadl .modal-header {
+    display:block;
 }
 .custom-close-icon {
    background: transparent;
@@ -191,8 +196,12 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 
-#sidebarCollapse {
+.sidebarCollapse {
     display: none;
+}
+
+.bottom-3 {
+    bottom: 3%
 }
 
 .header {
@@ -271,7 +280,7 @@ ul ul a {
             transform: translateX(0px);
         }
 
-    #sidebarCollapse {
+    .sidebarCollapse {
         display: block;
         padding: 4px;
         margin-right: 4px;
