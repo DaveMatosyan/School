@@ -262,6 +262,10 @@ a[data-toggle="collapse"] {
 .delete-account .btn img {
     filter: invert(1);
 }
+.edit-icon {
+    width: 19px;
+    height: 19px;
+}
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;

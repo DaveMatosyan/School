@@ -71,8 +71,8 @@
                     @if(User.IsInRole("Principal"))
     {
                 <td>
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id" asp-route-index="@ViewBag.index" asp-route-ClassId="@ViewBag.ClassId">Delete</a>
-                    <a class="btn btn-primary" asp-action="Edit" asp-route-DayId="@ViewBag.Index" asp-route-Hour="@item.Hour" asp-route-ClassId="@ViewBag.ClassId">Edit</a>
+                    <a class="btn " asp-action="Edit" asp-route-DayId="@ViewBag.Index" asp-route-Hour="@item.Hour" asp-route-ClassId="@ViewBag.ClassId"><img class="edit-icon" src="https://www.svgrepo.com/show/36160/edit-button.svg" /></a>
+                    <a class="btn " asp-action="Delete" asp-route-id="@item.Id" asp-route-index="@ViewBag.index" asp-route-ClassId="@ViewBag.ClassId"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Delete-button.svg"/></a>
                 </td>
     }
             
