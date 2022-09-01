@@ -134,16 +134,18 @@ table {
     border-radius: 8px;
     overflow: hidden;
 }
-    table tr td, tr th {
-        vertical-align: middle;
-    }
+table tr td, tr th {
+    vertical-align: middle;
+}
 table thead {
     background-color: var(--cyan2);
     color: white;
 }
+table tbody tr td{
+    height: 60px;
+}
 table thead tr th {
     height: 50px;
-   
 }
 table.classes-table tr td{
     width: 33.333%;
@@ -209,60 +211,78 @@ a[data-toggle="collapse"] {
     background: var(--cyan1);
     color: #fff;
     transition: all 0.3s;
+    position: relative;
 }
 
-    .header .sidebar-header {
-        padding: 20px;
-        background: #6d7fcc;
-    }
+.header .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+}
 
-    .header ul.components {
-        padding: 20px 20px;
-    }
+.header ul.components {
+    padding: 20px 20px;
+}
 
-    .header ul p {
-        color: #fff;
-        padding: 10px;
-    }
+.header ul p {
+    color: #fff;
+    padding: 10px;
+}
 
-    .header ul li a {
-        padding: 10px;
-        font-size: 1.1em;
-        display: block;
-        color: white;
-        opacity: 0.7;
-        transition: opacity .3s ease-out;
-    }
+.header ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: white;
+    opacity: 0.7;
+    transition: opacity .3s ease-out;
+}
 
-        .header ul li a:hover {
-            opacity: 1;
-        }
+.header ul li a:hover {
+    opacity: 1;
+}
 
-    .header ul li.active > a, a[aria-expanded="true"] {
-        color: #fff;
-        background: #6d7fcc;
-    }
+.header ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
 
+.delete-account {
+    width: 86%;
+}
+.delete-account:hover {
+    color: white;
+}
+
+.delete-account .btn {
+    padding: 5px;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+}
+.delete-account .btn img {
+    filter: invert(1);
+}
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
     background: #6d7fcc;
 }
-    .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
-        background-color: var(--cyan2);
-        border-color: var(--cyan2);
-    }
-    @media (min-width: 768px) {
-        html {
-            font-size: 16px;
-        }
-    }
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+    background-color: var(--cyan2);
+    border-color: var(--cyan2);
+}
 
-    @media (max-width: 450px) {
-        .h-custom {
-            height: 100%;
-        }
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
     }
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}
 @media (max-width: 576px) {
     .closed-mob {
         transform: translateX(-200px);

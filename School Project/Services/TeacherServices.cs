@@ -28,7 +28,24 @@ namespace School_Project.Services
         }
         public static void Edit(User Teacher)
         {
+            if(Teacher.FirstName==null||Teacher.LastName==null||Teacher.Username==null)
+            {
+                return;
+            }
+            var OldTeacher = UserServices.GetUserById(Teacher.Id);
+            if (Teacher.Password == null)
+            {
+                Teacher.Password = OldTeacher.Password;
+            } else
+            {
+                Teacher.Password = HashServices.HashPassword(Teacher.Password);
 
+            }
+            using (SchoolContext db = new SchoolContext())
+            {
+                db.Update(Teacher);
+                db.SaveChanges();
+            }
         }
         public static void DeleteTeacher(int TeacherId)
         {

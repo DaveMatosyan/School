@@ -37,9 +37,18 @@ namespace School_Project.Controllers
             return View(Teacher);
         }
         [HttpPost]
-        public IActionResult Edit(User Teacher)
+        public IActionResult Edit(string FirstName, string LastName, string Username, string Password, int TeacherId, string Profession)
         {
-            TeacherServices.Edit(Teacher);
+            Models.User t = new();
+            t.FirstName = FirstName;
+            t.LastName = LastName;
+            t.Username = Username;
+            t.Password = Password;
+            t.Id = TeacherId;
+            t.Profession = Profession;
+            t.Role = "Teacher";
+
+            TeacherServices.Edit(t);
             return RedirectToAction("AllTeachers");
         }
         public IActionResult Find(int id)

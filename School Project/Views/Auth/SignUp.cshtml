@@ -4,60 +4,65 @@
     ViewData["Title"] = "Signup";
 }
  <section class="d-flex justify-content-center">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row d-flex justify-content-center align-items-center">
 <!-- Section: Design Block -->
-<section class="text-center">
+<section class="text-center p-0">
   <!-- Background image -->
   <div class="p-5 bg-image" style="
         background-image: url('https://sbooks.net/wp-content/uploads/2021/10/old-book-flying-letters-magic-light-background-bookshelf-library-ancient-books-as-symbol-knowledge-history-218640948.jpg');
         height: 300px;
+background-size: cover;
         "></div>
   <!-- Background image -->
 
-  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+  <div class="card shadow-5-strong" style="
         margin-top: -200px;
         background: hsla(0, 0%, 100%, 0.8);
         backdrop-filter: blur(30px);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
         ">
-    <div class="card-body py-5 px-md-5">
+    <div class="card-body">
 
       <div class="row d-flex justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-10">
           <h2 class="fw-bold mb-5">Sign up now</h2>
           <form asp-action="Signup" method="post">
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row">
               <div class="col-md-6 mb-4">
                 <div class="form-outline">
-                  <input type="text" asp-for="FirstName" class="form-control" />
                   <label class="form-label" >First name</label>
+                  <input type="text" asp-for="FirstName" class="form-control" />
                 </div>
               </div>
               <div class="col-md-6 mb-4">
                 <div class="form-outline">
-                  <input type="text" asp-for="LastName" class="form-control" />
                   <label class="form-label" >Last name</label>
+                  <input type="text" asp-for="LastName" class="form-control" />
                 </div>
               </div>
             </div>
 
             <!-- Username input -->
             <div class="form-outline mb-4">
-              <input type="text" asp-for="Username" class="form-control" />
               <label class="form-label" >Username</label>
+              <input type="text" asp-for="Username" class="form-control" />
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <input type="password" asp-for="Password" class="form-control" />
               <label class="form-label" >Password</label>
+              <input type="password" asp-for="Password" class="form-control" />
             </div>
 
             <!-- ClassName input -->
 
-            <div class="form-outline mb-3">
+            <div class="form-outline mb-3 class-select">
 
+                <label class="form-label">Class</label>
                 <select class="form-select" asp-for="ClassId">
                     @{
                         foreach(Class a in ViewBag.Clases) {
@@ -65,7 +70,6 @@
                         }
                     }
                 </select>
-                <label class="form-label">Class</label>
 
             </div>
 

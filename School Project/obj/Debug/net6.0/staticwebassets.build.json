@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "P06JvJmT2mx1s73PZJchMyCXHWHHEaI5ljqUUAhAwFM=",
+  "Hash": "i3xEZ/QRZ0vuGGCjs85w9/uKz4PGhPKALOXp8EbsBX8=",
   "Source": "School Project",
   "BasePath": "_content/School Project",
   "Mode": "Default",
@@ -68,12 +68,12 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\images\\delete-icon.svg",
       "SourceId": "School Project",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\",
       "BasePath": "_content/School Project",
-      "RelativePath": "favicon.ico",
+      "RelativePath": "images/delete-icon.svg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -82,7 +82,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\favicon.ico"
+      "OriginalItemSpec": "wwwroot\\images\\delete-icon.svg"
+    },
+    {
+      "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\images\\favicon.ico",
+      "SourceId": "School Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\",
+      "BasePath": "_content/School Project",
+      "RelativePath": "images/favicon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\favicon.ico"
     },
     {
       "Identity": "C:\\Users\\user\\source\\repos\\School Project\\School Project\\wwwroot\\js\\site.js",

@@ -85,8 +85,12 @@
                         @if (ViewContext.RouteData.Values.Where(v => v.Key == "action").FirstOrDefault().Value.ToString() == "Profile" && !User.IsInRole("Principal"))
                         {
                             <li class="nav-item">
-                                <a class="btn btn btn-danger teacherModalButton edit position-absolute bottom-3" data-toggle="modal">Delete Account</a>
-
+                                <button class="text-white btn teacherModalButton delete-account position-absolute bottom-3 d-flex align-items-center p-0" data-toggle="modal">
+                                    <span class=" btn btn-danger mr-2p">
+                                         <img src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" width="20" height="20" />
+                                    </span>
+                                    <span>Delete Account</span>
+                                </button>
                             </li>
                         }
 
