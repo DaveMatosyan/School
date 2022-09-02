@@ -18,19 +18,11 @@ namespace School_Project.Controllers
             }
             return View();
         }
-        public IActionResult SignUp()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return Redirect("/");
-            }
-            var classes = ClassServices.GetAllClasses();
-            ViewBag.Clases = classes;
-            return View();
-        }
+
         [HttpPost]
         public async Task<IActionResult> LogInAsync(LoginFormModel credentials)
         {
+
             if (User.Identity.IsAuthenticated)
             {
                 return Redirect("/");
@@ -40,23 +32,50 @@ namespace School_Project.Controllers
                 return View();
 
             }
-
-            User user = UserServices.GetUser(credentials.Username, credentials.Password);
-            if (user != null)
+            if (ModelState.IsValid)
             {
+                User user = UserServices.GetUser(credentials.Username, credentials.Password);
+                if (user != null)
+                {
 
-                var claims = new List<Claim>
+                    var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Role, user.Role),
                     new Claim(ClaimTypes.Name, user.Id.ToString()),
                 };
-                var idenity = new ClaimsIdentity(claims, "MyCookieAuth");
+                    var idenity = new ClaimsIdentity(claims, "MyCookieAuth");
 
-                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(idenity);
-                await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
+                    ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(idenity);
+                    await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
 
-                Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(credentials.Username), null);
+                    Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(credentials.Username), null);
+                    return Redirect("/");
+                }
+                else
+                {
+                    ViewBag.Wrong = "email or password is incorrect";
+                }
+            }
+
+
+            return View();
+        }
+        public IActionResult SignUp(bool UserExist)
+        {
+
+            if (User.Identity.IsAuthenticated)
+            {
                 return Redirect("/");
+            }
+            var classes = ClassServices.GetAllClasses();
+            ViewBag.Clases = classes;
+            if(UserExist)
+            {
+                ViewBag.UserExist = true;
+            }
+            else
+            {
+                ViewBag.UserExist = false;
             }
             return View();
         }
@@ -67,16 +86,26 @@ namespace School_Project.Controllers
             {
                 return Redirect("/");
             }
-            if (UserServices.isUsernameExist(user.Username))
+            bool UserExist = UserServices.isUsernameExist(user.Username);
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("SignUp");
+
+                if (UserExist)
+                {
+                     
+                    return RedirectToAction("SignUp", true);
+                }
+                if (user.Username != null && user.Password != null && user.FirstName != null && user.LastName != null)
+                {
+                    UserServices.PostStudent(user);
+                    return RedirectToAction("Login");
+                }
             }
-            if (user.Username != null && user.Password != null && user.FirstName != null && user.LastName != null)
-            {
-                UserServices.PostStudent(user);
-                return RedirectToAction("Login");
-            }
+            var classes = ClassServices.GetAllClasses();
+            ViewBag.Clases = classes;
+            ViewBag.UserExist = UserExist;
             return View();
+
         }
         public async Task<IActionResult> LogOutAsync()
         {

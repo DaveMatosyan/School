@@ -36,12 +36,14 @@ background-size: cover;
                 <div class="form-outline">
                   <label class="form-label" >First name</label>
                   <input type="text" asp-for="FirstName" class="form-control" />
+                  <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
               </div>
               <div class="col-md-6 mb-4">
                 <div class="form-outline">
                   <label class="form-label" >Last name</label>
                   <input type="text" asp-for="LastName" class="form-control" />
+                  <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
               </div>
             </div>
@@ -50,12 +52,19 @@ background-size: cover;
             <div class="form-outline mb-4">
               <label class="form-label" >Username</label>
               <input type="text" asp-for="Username" class="form-control" />
+              <span asp-validation-for="Username" class="text-danger"></span>
+                                        @if(ViewBag.UserExist)
+                                        {
+                                            <p class="text-danger">Username already exist</p>
+                                        }
+
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
               <label class="form-label" >Password</label>
               <input type="password" asp-for="Password" class="form-control" />
+              <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
             <!-- ClassName input -->

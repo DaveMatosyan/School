@@ -19,15 +19,15 @@ namespace School_Project.Controllers
         {
             if (ChangedUser.FirstName == null || ChangedUser.LastName == null || ChangedUser.Username == null)
             {
-                return View();
+                return RedirectToAction("Profile");
             }
             int UserId = Convert.ToInt32(User.Identity.Name);
             User OldUser = UserServices.GetUserById(UserId);
             ChangedUser.Id = UserId;
             UserServices.UpdateUser(OldUser, ChangedUser);
-            return Redirect("/");
+            return RedirectToAction("Profile");
         }
-        
+
         [Authorize(Roles = "Teacher,Student")]
         public async Task<IActionResult> DeleteAsync()
         {

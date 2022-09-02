@@ -86,16 +86,16 @@ namespace School_Project.Services
             if (ChangedUser.Password != null)
             {
                 ChangedUser.Password = HashServices.HashPassword(ChangedUser.Password);
-            } 
+            }
             else
             {
                 ChangedUser.Password = OldUser.Password;
             }
-            if(OldUser.Profession == "Principal")
+            if (OldUser.Profession == "Principal")
             {
                 ChangedUser.Profession = "Principal";
             }
-            
+
             using (SchoolContext db = new SchoolContext())
             {
                 db.Update(ChangedUser);
@@ -103,7 +103,7 @@ namespace School_Project.Services
 
             }
         }
-        
+
         public static void DeleteUser(int Id)
         {
             using (SchoolContext db = new SchoolContext())
