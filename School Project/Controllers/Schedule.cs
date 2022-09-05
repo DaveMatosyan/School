@@ -75,7 +75,21 @@ namespace School_Project.Controllers
         [HttpPost]
         public IActionResult Create(int ClassId, School_Project.Models.AddSchedule Credentials)
         {
-            int test = ClassId;
+            ViewBag.Teachers = TeacherServices.GetTeachers();
+            ViewBag.ClassId = ClassId;
+
+            if (ScheduleServices.IsExist(ClassId, Credentials.DayId, Credentials.Hour))
+            {
+                ViewBag.TeacherUsername = "Already exist";
+                ViewBag.HourErr = "Already exist";
+                ViewBag.Weekday = "Already exist";
+                return View();
+            }
+            if (Credentials.Hour > 7 || Credentials.Hour < 1)
+            {
+                ViewBag.HourErr = "hour range is from 1 to 7";
+                return View();
+            }
             User user = UserServices.GetUserByUsername(Credentials.TeacherUsername);
             if (user != null)
             {
@@ -95,6 +109,25 @@ namespace School_Project.Controllers
         [HttpPost]
         public IActionResult Edit(int ClassId, int SId, string STitle, Models.Schedule schedule)
         {
+            ViewBag.ClassId = ClassId;
+            ViewBag.Teachers = TeacherServices.GetTeachers();
+            Models.Schedule s = ScheduleServices.GetById(SId);
+            if (ScheduleServices.IsExist(ClassId, schedule.DayId, schedule.Hour))
+            {
+                if(s.DayId== schedule.DayId && s.Hour==schedule.Hour && s.ClassId == schedule.ClassId)
+                {
+                    return RedirectToAction("WeekTimetable", new { ClassId = ClassId });
+                }
+                ViewBag.TeacherUsername = "Already exist";
+                ViewBag.HourErr = "Already exist";
+                ViewBag.Weekday = "Already exist";
+                return View(s);
+            }
+            if (schedule.Hour > 7)
+            {
+                ViewBag.HourErr = "hour range is from 1 to 7";
+                return View(s);
+            }
             schedule.Id = SId;
             string Profession = UserServices.GetUserById(schedule.TeacherId).Profession;
             schedule.Title = Profession + "Hour";

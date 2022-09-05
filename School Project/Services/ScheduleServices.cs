@@ -21,6 +21,15 @@ namespace School_Project.Services
                 return list;
             }
         }
+        
+        public static Schedule GetById(int Id)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                var schedule = db.Schedules.FirstOrDefault(b => b.Id == Id);
+                return schedule;
+            }
+        }
         public static List<Schedule> GetScedulesByTeacherId(int? TeacherId)
         {
             using (SchoolContext db = new SchoolContext())
@@ -118,6 +127,19 @@ namespace School_Project.Services
                     return "Sunday";
             }
             return "sss";
+        }
+        
+        public static bool IsExist(int ClassId, int WeekdayId, int Hour)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                var schedule = db.Schedules.FirstOrDefault(b => b.ClassId == ClassId && b.DayId == WeekdayId && b.Hour == Hour);
+                if(schedule == null)
+                {
+                    return false;
+                }
+                return true;
+            }
         }
     }
 }
