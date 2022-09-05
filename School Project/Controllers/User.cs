@@ -15,17 +15,35 @@ namespace School_Project.Controllers
             return View(user);
         }
         [HttpPost]
-        public IActionResult Edit(User ChangedUser)
+        public IActionResult Profile(User ChangedUser)
         {
-            if (ChangedUser.FirstName == null || ChangedUser.LastName == null || ChangedUser.Username == null)
-            {
-                return RedirectToAction("Profile");
-            }
+
             int UserId = Convert.ToInt32(User.Identity.Name);
+            User user = UserServices.GetUserById(UserId);
             User OldUser = UserServices.GetUserById(UserId);
             ChangedUser.Id = UserId;
+            if (UserServices.isUsernameExist(ChangedUser.Username) && user.Username != ChangedUser.Username)
+            {
+                ViewBag.Username = "Username already exists";
+            }
+            if (ChangedUser.FirstName == null || ChangedUser.LastName == null || ChangedUser.Username == null || ViewBag.Username == "Username already exists")
+            {
+                if(ChangedUser.FirstName == null)
+                {
+                    ViewBag.FirstName = "FirstName is required";
+                }
+                if (ChangedUser.LastName == null)
+                {
+                    ViewBag.LastName = "LastName is required";
+                }
+                if (ChangedUser.Username == null)
+                {
+                    ViewBag.Username = "Username is required";
+                } 
+                return View(user);
+            }
             UserServices.UpdateUser(OldUser, ChangedUser);
-            return RedirectToAction("Profile");
+            return View(user);
         }
 
         [Authorize(Roles = "Teacher,Student")]
