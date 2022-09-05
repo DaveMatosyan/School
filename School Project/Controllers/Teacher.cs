@@ -20,17 +20,41 @@ namespace School_Project.Controllers
         [HttpPost]
         public IActionResult AddTeacher(User user)
         {
+
             if (UserServices.isUsernameExist(user.Username))
             {
-                return RedirectToAction("AddTeacher");
+                ViewBag.Username = "Username already exists";
             }
-            if (user.Username != null && user.Password != null && user.FirstName != null && user.LastName != null)
+            if (user.Username == null || user.Password == null || user.FirstName == null || user.LastName == null || ViewBag.Username == "Username already exists")
             {
-                UserServices.PostTeacher(user);
-                return RedirectToAction("AllTeachers");
+                if (user.Username == null)
+                {
+                    ViewBag.Username = "Username is required";
+                }
+                if (user.Password == null)
+                {
+                    ViewBag.Password = "Password is required";
+                }
+                if (user.FirstName == null)
+                {
+                    ViewBag.FirstName = "FirstName is required";
+                }
+                if (user.LastName == null)
+                {
+                    ViewBag.LastName = "LastName is required";
+                }
+                return View();
+
             }
-            return View();
+
+
+
+
+            UserServices.PostTeacher(user);
+            return RedirectToAction("AllTeachers");
+
         }
+
         public IActionResult Edit(int id)
         {
             var Teacher = UserServices.GetUserById(id);
