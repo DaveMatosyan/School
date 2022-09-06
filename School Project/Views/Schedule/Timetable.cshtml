@@ -42,7 +42,11 @@
                     @Html.DisplayNameFor(model => model.Class.Class1)
                 </th>
     }
-                <th></th>
+                    @if(User.IsInRole("Principal"))
+    {
+                <th>
+                </th>
+    }
             </tr>
         </thead>
         <tbody>
@@ -70,7 +74,7 @@
 
                     @if(User.IsInRole("Principal"))
     {
-                <td>
+                <td class="d-flex justify-content-center align-items-center">
                     <a class="btn " asp-action="Edit" asp-route-DayId="@ViewBag.Index" asp-route-Hour="@item.Hour" asp-route-ClassId="@ViewBag.ClassId"><img class="edit-icon" src="https://www.svgrepo.com/show/36160/edit-button.svg" /></a>
                     <a class="btn " asp-action="Delete" asp-route-id="@item.Id" asp-route-index="@ViewBag.index" asp-route-ClassId="@ViewBag.ClassId"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Delete-button.svg"/></a>
                 </td>
