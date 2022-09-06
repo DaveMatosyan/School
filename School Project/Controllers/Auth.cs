@@ -53,7 +53,7 @@ namespace School_Project.Controllers
                 }
                 else
                 {
-                    ViewBag.Wrong = "email or password is incorrect";
+                    ViewBag.Wrong = "username or password is incorrect";
                 }
             }
 
@@ -80,8 +80,14 @@ namespace School_Project.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Signup(User user)
+        public IActionResult Signup(SignupFormModel SFM)
         {
+            Models.User user = new Models.User();
+            user.FirstName = SFM.FirstName;
+            user.LastName = SFM.LastName;
+            user.Username = SFM.Username;
+            user.Password = SFM.Password;
+            user.ClassId = SFM.ClassId;
             if (User.Identity.IsAuthenticated)
             {
                 return Redirect("/");

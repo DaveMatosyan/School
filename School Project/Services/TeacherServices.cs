@@ -58,5 +58,18 @@ namespace School_Project.Services
                 db.SaveChanges();
             }
         }
+        
+        public static bool IsTeacherBusy(int TeacherId, int DayId, int Hour)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                var item = db.Schedules.FirstOrDefault(x => x.TeacherId == TeacherId && x.DayId == DayId && x.Hour == Hour);
+                if(item != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }

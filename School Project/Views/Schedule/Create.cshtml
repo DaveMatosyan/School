@@ -24,7 +24,6 @@
                     <div class="form-outline flex-fill mb-0">
                       <label class="form-label">TeacherUsername</label>
                         <select asp-for="TeacherUsername" class="form-select" aria-label="select example">
-                            <option selected>Choose Teacher</option>
                                                     @foreach(var i in ViewBag.Teachers)
                                                     {
                                                         <option value="@i.Username">@i.Username</option>
@@ -48,7 +47,6 @@
                     <div class="form-outline flex-fill mb-0">
                       <label class="form-label">Weekday</label>
                         <select asp-for="DayId" class="form-select" aria-label="select example">
-                            <option selected>Choose Weekday</option>
                             <option value="1">Monday</option>
                             <option value="2">Tuesday</option>
                             <option value="3">Wednesday</option>

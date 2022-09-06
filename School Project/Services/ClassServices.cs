@@ -62,9 +62,11 @@ namespace School_Project.Services
         {
             using (SchoolContext db = new SchoolContext())
             {
-                var itemsToRemove = db.Schedules.Where(x => x.ClassId == ClassId); //returns a single item.
+                var SchedulesToRemove = db.Schedules.Where(x => x.ClassId == ClassId); //returns a single item.
+                var StudentsToRemove = db.Users.Where(x => x.ClassId == ClassId); //returns a single item.
                 var Class = db.Classes.Find(ClassId);
-                db.Schedules.RemoveRange(itemsToRemove);
+                db.Schedules.RemoveRange(SchedulesToRemove);
+                db.Users.RemoveRange(StudentsToRemove);
                 db.Classes.Remove(Class);
                 db.SaveChanges();
             }

@@ -85,6 +85,13 @@ namespace School_Project.Controllers
                 ViewBag.Weekday = "Already exist";
                 return View();
             }
+            if (TeacherServices.IsTeacherBusy(UserServices.GetUserByUsername(Credentials.TeacherUsername).Id, Credentials.DayId, Credentials.Hour))
+            {
+                ViewBag.TeacherUsername = "Teacher is busy";
+                ViewBag.HourErr = "Teacher is busy";
+                ViewBag.Weekday = "Teacher is busy";
+                return View();
+            }
             if (Credentials.Hour > 7 || Credentials.Hour < 1)
             {
                 ViewBag.HourErr = "hour range is from 1 to 7";
@@ -123,6 +130,14 @@ namespace School_Project.Controllers
                 ViewBag.Weekday = "Already exist";
                 return View(s);
             }
+            if (TeacherServices.IsTeacherBusy(schedule.TeacherId, schedule.DayId, schedule.Hour))
+            {
+                ViewBag.TeacherUsername = "Teacher is busy";
+                ViewBag.HourErr = "Teacher is busy";
+                ViewBag.Weekday = "Teacher is busy";
+                return View(s);
+            }
+
             if (schedule.Hour > 7)
             {
                 ViewBag.HourErr = "hour range is from 1 to 7";
