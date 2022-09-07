@@ -1,5 +1,4 @@
-﻿using Microsoft.Build.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace School_Project.Models
@@ -8,6 +7,7 @@ namespace School_Project.Models
     {
         public User()
         {
+            Grades = new HashSet<Grade>();
             Schedules = new HashSet<Schedule>();
         }
 
@@ -20,6 +20,7 @@ namespace School_Project.Models
         public int? ClassId { get; set; }
         public string? Profession { get; set; }
 
+        public virtual ICollection<Grade> Grades { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
     }
 }

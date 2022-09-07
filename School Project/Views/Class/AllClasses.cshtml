@@ -22,6 +22,9 @@
                             Timetable
                         </th>
                         <th>
+                            MarkBook
+                        </th>
+                        <th>
 
                         </th>
                     </tr>
@@ -34,6 +37,9 @@
                         </td>
                         <td>
                             <a asp-controller="Schedule" asp-action="WeekTimetable" asp-route-ClassId="@item.Id">Schedules</a>
+                        </td>
+                        <td>
+                            <a asp-controller="MarkBook" asp-action="Grades" asp-route-ClassId="@item.Id" asp-route-Title="MathematicsHour">Grades</a>
                         </td>
                         <td>
                             <a class="btn " asp-action="Edit" asp-route-id="@item.Id"><img class="edit-icon" src="https://www.svgrepo.com/show/36160/edit-button.svg" /></a>

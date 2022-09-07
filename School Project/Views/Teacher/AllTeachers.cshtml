@@ -46,7 +46,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Profession)
             </td>
-            <td>
+            <td class="d-flex justify-content-center align-items-center">
                 <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal"><img class="edit-icon" src="https://www.svgrepo.com/show/36160/edit-button.svg" /></a>
                 <a class="btn" asp-action="Delete" asp-route-id="@item.Id"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Delete-button.svg"/></a>
                 <input type="hidden" class="Id" value="@item.Id" />

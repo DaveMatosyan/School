@@ -17,6 +17,7 @@ namespace School_Project.Models
         }
 
         public virtual DbSet<Class> Classes { get; set; } = null!;
+        public virtual DbSet<Grade> Grades { get; set; } = null!;
         public virtual DbSet<Schedule> Schedules { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
@@ -36,6 +37,21 @@ namespace School_Project.Models
                 entity.Property(e => e.Class1)
                     .HasMaxLength(50)
                     .HasColumnName("Class");
+            });
+
+            modelBuilder.Entity<Grade>(entity =>
+            {
+                entity.Property(e => e.Day).HasColumnType("date");
+
+                entity.Property(e => e.Grade1).HasColumnName("Grade");
+
+                entity.Property(e => e.Title).HasMaxLength(50);
+
+                entity.HasOne(d => d.Student)
+                    .WithMany(p => p.Grades)
+                    .HasForeignKey(d => d.StudentId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_MarkBook_Users");
             });
 
             modelBuilder.Entity<Schedule>(entity =>

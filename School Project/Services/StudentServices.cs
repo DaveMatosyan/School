@@ -5,13 +5,14 @@ namespace School_Project.Services
 {
     public class StudentServices
     {
-        public static dynamic GetTeachersLessonsByWeekday(int StudentId, int WeekdayId)
+
+        public static dynamic GetStudentsByClassId(int ClassId)
         {
-            int? classId = UserServices.GetUserById(StudentId).ClassId;
             using (SchoolContext db = new SchoolContext())
             {
-                var list = db.Schedules.Where(b => b.Class.Id == classId && b.DayId == WeekdayId).Include("Teacher").OrderBy(o => o.Hour).ToList();
-                return list;
+
+                var items = db.Users.Where(b => b.ClassId == ClassId).OrderBy(x => x.Id).ToArray();
+                return items;
             }
         }
 
