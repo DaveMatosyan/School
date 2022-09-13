@@ -35,24 +35,29 @@
                             @for(int z = 1; z < ViewBag.DaysInMonth+1; z++)
                             {
                                 <td>
-                                        @for(int j = 0; j < ViewBag.Grades.Length; j++)
-                                        {
-                                            @if(!(ViewBag.Grades[j].Day.Day == z && ViewBag.Grades[j].StudentId == Model[i].Id))
+                                    
+                                            @{
+                                                Grade[] grades = ViewBag.Grades; 
+                                            }
+                                            @if(!Array.Exists( grades, element => element.Day.Day == z && element.StudentId == Model[i].Id))
                                             {
                                                 <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal">-</a>
                                                 <input type="hidden" class="CreatingDay" value="@z" />
-                                                <input type="hidden" class="CreatingStudentId" value="@Model[i].Id" />
+                                            <input type="hidden" class="CreatingStudentId" value="@Model[i].Id" />
 
 
 
-                                            }
-                                            else
+                                        }
+                                        else
+                                        {
                                             {
-                                                <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal">@ViewBag.Grades[j].Grade1</a>
-                                                <input type="hidden" class="Id" value="@ViewBag.Grades[j].Id" />
+                                                Grade grade = grades[Array.FindIndex(grades, val => val.Day.Day == z && val.StudentId == Model[i].Id)];
+                                                <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal">@grade.Grade1</a>
+                                                <input type="hidden" class="Id" value="@grade.Id" />
                                                 <input type="hidden" class="CreatingDay" value="@z" />
                                             }
-                                        }
+
+                                            }
                                 </td>
                             }
         </tr>

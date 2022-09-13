@@ -13,7 +13,7 @@ namespace School_Project.Controllers
             ViewBag.Class = ClassServices.GetClassById(ClassId);
             ViewBag.DaysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
             int TeacherId = Convert.ToInt32(User.Identity.Name);
-            var Students = StudentServices.GetStudentsByTeacher(TeacherId);
+            var Students = StudentServices.GetStudentsByTeacherAndClass(TeacherId, ClassId);
 
             return View(Students);
         }
