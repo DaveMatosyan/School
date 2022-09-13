@@ -13,6 +13,17 @@ namespace School_Project.Services
 
             }
         }
+        static public List<Class> GetClassesByClassIds(int TeacherId)
+        {
+            using (var context = new SchoolContext())
+            {
+                var TeachersClassesIds = TeacherServices.TeachersClassesIds(TeacherId);
+                var classes = context.Classes.Where(b => TeachersClassesIds.Contains(b.Id)).ToList();
+
+                return classes;
+
+            }
+        }
         static public List<Class> GetAllClassesInList()
         {
             using (var context = new SchoolContext())

@@ -6,7 +6,7 @@
  <section class="d-flex pt-80 justify-content-center">
   <div class="container">
     <div class="row d-flex justify-content-center align-items-center">
-<h1>@ViewBag.ClassName</h1>
+<h1>@ViewBag.Class.Class1</h1>
 
 
     <div class="overflow-auto">
@@ -18,7 +18,7 @@
             </th>
                             @for(int i = 1; i < ViewBag.DaysInMonth+1; i++)
                             {
-                                <th>
+                                <th class="t-a-c">
                                     @i
                                 </th>
                             }
@@ -34,20 +34,26 @@
             </td>
                             @for(int z = 1; z < ViewBag.DaysInMonth+1; z++)
                             {
-                                <th>
+                                <td>
                                         @for(int j = 0; j < ViewBag.Grades.Length; j++)
                                         {
-                                            @if(ViewBag.Grades[j].Day.Day == z && ViewBag.Grades[j].StudentId == Model[i].Id)
+                                            @if(!(ViewBag.Grades[j].Day.Day == z && ViewBag.Grades[j].StudentId == Model[i].Id))
                                             {
-                                                <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal">@ViewBag.Grades[j].Grade1</a>
+                                                <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal">-</a>
+                                                <input type="hidden" class="CreatingDay" value="@z" />
+                                                <input type="hidden" class="CreatingStudentId" value="@Model[i].Id" />
+
+
+
                                             }
                                             else
                                             {
-                                                <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal">.</a>
-                                                
+                                                <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal">@ViewBag.Grades[j].Grade1</a>
+                                                <input type="hidden" class="Id" value="@ViewBag.Grades[j].Id" />
+                                                <input type="hidden" class="CreatingDay" value="@z" />
                                             }
                                         }
-                                </th>
+                                </td>
                             }
         </tr>
 }
@@ -57,4 +63,84 @@
 </div>
 </div>
 </div>
+
+<div class="modal" Id="teacherModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Grade</h5>
+        <button type="button" class="close closeTeacherModal custom-close-icon" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <form action="Form" method="post" >
+          <div class="form-group">
+            <label >Day</label>
+            <input type="text" class="form-control Day" name="Day">
+          </div>
+
+          <div class="form-group">
+            <label>Grade</label>
+            <input type="text" class="form-control Grade" name="Grade">
+          </div>
+          <div class="form-group">
+            <label>Hour</label>
+            <input type="text" class="form-control Hour" name="Hour">
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary closeTeacherModal" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+          <input type="hidden" class="StudentId" name="StudentId">
+          <input type="hidden" class="ItemId" name="ItemId">
+          <input type="hidden" class="ClassId" name="ClassId">
+        </form>
+      </div>
+
+   </div>
+  </div>
+   <div  class="modal-layer closeTeacherModal"></div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-google="tooltip"]').tooltip();
+
+            $('table .edit').on('click', function () {
+                var Id = $(this).parent().find('.Id').val();
+                var CreatingStudentId = $(this).parent().find('.CreatingStudentId').val();
+                $('.StudentId').val(CreatingStudentId);
+                $('.ClassId').val(@ViewBag.Class.Id);
+                var CreatingDay = $(this).parent().find('.CreatingDay').val();
+                $('.Day').val(CreatingDay);
+                debugger;
+
+                if (Id != undefined) {
+                    $.ajax({
+                        type: 'GET',
+                        url: '/MarkBook/Find/' + Id,
+                        success: function(Grade) {
+                            debugger;
+
+                            $('.Grade').val(Grade.grade1);
+                            $('.Hour').val(Grade.hour);
+                            $('.ItemId').val(Id);
+                        }
+                    })
+                } else {
+
+                    $('.Grade').val("");
+                    $('.Hour').val("");
+                    $('.ItemId').val(0);
+
+                }
+
+            })
+        });
+    </script>
+
+}
+</div>
+
 </section>

@@ -58,7 +58,22 @@ namespace School_Project.Services
                 db.SaveChanges();
             }
         }
-        
+        public static List<int?> TeachersClassesIds(int TeacherId)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                var list = db.Schedules.Where(b => b.TeacherId == TeacherId).Include("Class").ToArray();
+                List<int?> result = new List<int?>();
+                foreach(var item in list)
+                {
+                    if(!result.Contains(item.ClassId))
+                    {
+                        result.Add(item.ClassId);
+                    }
+                }
+                return result;
+            }
+        }
         public static bool IsTeacherBusy(int TeacherId, int DayId, int Hour)
         {
             using (SchoolContext db = new SchoolContext())

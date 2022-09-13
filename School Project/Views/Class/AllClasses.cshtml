@@ -18,15 +18,26 @@
                         <th>
                             Class
                         </th>
-                        <th>
-                            Timetable
-                        </th>
-                        <th>
-                            MarkBook
-                        </th>
-                        <th>
+                                @if(User.IsInRole("Principal"))
+                                {
+                                    <th>
+                                        Timetable
+                                    </th>
+                                }
 
-                        </th>
+                                @if(User.IsInRole("Teacher"))
+                                {
+                                    <th>
+                                        MarkBook
+                                    </th>
+                                }
+                                
+                                @if(User.IsInRole("Principal"))
+                                {
+                                    <th>
+                                    </th>
+                                }
+
                     </tr>
                 </thead>
                 <tbody>
@@ -35,16 +46,25 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Class1)
                         </td>
-                        <td>
-                            <a asp-controller="Schedule" asp-action="WeekTimetable" asp-route-ClassId="@item.Id">Schedules</a>
-                        </td>
-                        <td>
-                            <a asp-controller="MarkBook" asp-action="Grades" asp-route-ClassId="@item.Id" asp-route-Title="MathematicsHour">Grades</a>
-                        </td>
-                        <td>
-                            <a class="btn " asp-action="Edit" asp-route-id="@item.Id"><img class="edit-icon" src="https://www.svgrepo.com/show/36160/edit-button.svg" /></a>
-                            <a class="btn " asp-action="Delete" asp-route-id="@item.Id" ><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Delete-button.svg"/></a>
-                        </td>
+                                @if(User.IsInRole("Teacher"))
+                                {
+                                    <td>
+                                        <a asp-controller="MarkBook" asp-action="Grades" asp-route-ClassId="@item.Id" asp-route-Title="MathematicsHour">Grades</a>
+                                    </td>
+                                }
+
+
+                                @if(User.IsInRole("Principal"))
+                                {
+                                    <td>
+                                        <a asp-controller="Schedule" asp-action="WeekTimetable" asp-route-ClassId="@item.Id">Schedules</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn " asp-action="Edit" asp-route-id="@item.Id"><img class="edit-icon" src="https://www.svgrepo.com/show/36160/edit-button.svg" /></a>
+                                        <a class="btn " asp-action="Delete" asp-route-id="@item.Id" ><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Delete-button.svg"/></a>
+                                    </td>
+                                }
+
                     </tr>
             }
                 </tbody>

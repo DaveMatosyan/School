@@ -60,13 +60,17 @@
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 ">Profile</span>
                             </a>
                         </li>
-                        @if (User.IsInRole("Principal"))
+                        @if (User.IsInRole("Teacher") || User.IsInRole("Principal"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link align-middle text-light" asp-area="" asp-controller="Class" asp-action="AllClasses">
                                     <i class="fs-4 bi-house"></i> <span class="ms-1 ">Classes</span>
                                 </a>
                             </li>
+                        }
+
+                        @if (User.IsInRole("Principal"))
+                        {
                             <li class="nav-item">
                                 <a class="nav-link align-middle text-light" asp-area="" asp-controller="Teacher" asp-action="AllTeachers">
                                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 ">Teachers</span>

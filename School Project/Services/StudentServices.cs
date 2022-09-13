@@ -6,12 +6,12 @@ namespace School_Project.Services
     public class StudentServices
     {
 
-        public static dynamic GetStudentsByClassId(int ClassId)
+        public static User [] GetStudentsByTeacher(int TeacherId)
         {
             using (SchoolContext db = new SchoolContext())
             {
-
-                var items = db.Users.Where(b => b.ClassId == ClassId).OrderBy(x => x.Id).ToArray();
+                var list = TeacherServices.TeachersClassesIds(TeacherId);
+                var items = db.Users.Where(b => list.Contains(b.ClassId)).ToArray();
                 return items;
             }
         }
