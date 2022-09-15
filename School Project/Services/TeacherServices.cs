@@ -47,17 +47,17 @@ namespace School_Project.Services
                 db.SaveChanges();
             }
         }
-        public static void DeleteTeacher(int TeacherId)
+        static public void PostTeacher(User user)
         {
-            using (SchoolContext db = new SchoolContext())
+            using (var context = new SchoolContext())
             {
-                var itemsToRemove = db.Schedules.Where(x => x.TeacherId == TeacherId); //returns a single item.
-                var Teacher = db.Users.Find(TeacherId);
-                db.Schedules.RemoveRange(itemsToRemove);
-                db.Users.Remove(Teacher);
-                db.SaveChanges();
+                user.Password = HashServices.HashPassword(user.Password);
+                user.Role = "Teacher";
+                context.Add(user);
+                context.SaveChanges();
             }
         }
+
         public static List<int?> TeachersClassesIds(int TeacherId)
         {
             using (SchoolContext db = new SchoolContext())

@@ -23,5 +23,15 @@ namespace School_Project.Services
                 return items;
             }
         }
+        static public void PostStudent(User user)
+        {
+            using (var context = new SchoolContext())
+            {
+                user.Password = HashServices.HashPassword(user.Password);
+                user.Role = "Student";
+                context.Add(user);
+                context.SaveChanges();
+            }
+        }
     }
 }

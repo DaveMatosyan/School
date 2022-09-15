@@ -103,7 +103,7 @@ namespace School_Project.Controllers
                 }
                 if (user.Username != null && user.Password != null && user.FirstName != null && user.LastName != null)
                 {
-                    UserServices.PostStudent(user);
+                    StudentServices.PostStudent(user);
                     return RedirectToAction("Login");
                 }
             }

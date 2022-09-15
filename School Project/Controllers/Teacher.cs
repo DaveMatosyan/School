@@ -50,7 +50,7 @@ namespace School_Project.Controllers
 
 
 
-            UserServices.PostTeacher(user);
+            TeacherServices.PostTeacher(user);
             return RedirectToAction("AllTeachers");
 
         }
@@ -82,7 +82,7 @@ namespace School_Project.Controllers
         }
         public IActionResult Delete(int id)
         {
-            TeacherServices.DeleteTeacher(id);
+            UserServices.DeleteUser(id);
             return RedirectToAction("AllTeachers");
         }
     }
