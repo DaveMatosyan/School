@@ -12,6 +12,7 @@ namespace School_Project.Models
 
         public int Id { get; set; }
         public string Class1 { get; set; } = null!;
+
         public virtual ICollection<Schedule> Schedules { get; set; }
     }
 }

@@ -114,21 +114,30 @@ namespace School_Project.Controllers
         }
         [Authorize(Roles = "Principal")]
         [HttpPost]
-        public IActionResult Edit(int ClassId, int SId, string STitle, Models.Schedule schedule)
+        public IActionResult Edit(int ClassId, int SId, Models.Schedule schedule)
         {
+            schedule.Id = SId;
+            string Profession = UserServices.GetUserById(schedule.TeacherId).Profession;
+            schedule.Title = Profession + "Hour";
             ViewBag.ClassId = ClassId;
             ViewBag.Teachers = TeacherServices.GetTeachers();
             Models.Schedule s = ScheduleServices.GetById(SId);
+            Models.Schedule TestSchedule = ScheduleServices.GetScedule(s.ClassId, s.DayId, s.Hour);
+
             if (ScheduleServices.IsExist(ClassId, schedule.DayId, schedule.Hour))
             {
-                if(s.DayId== schedule.DayId && s.Hour==schedule.Hour && s.ClassId == schedule.ClassId)
+                if(s.DayId== schedule.DayId && s.Hour==schedule.Hour && s.ClassId == schedule.ClassId && s.Title == schedule.Title)
                 {
                     return RedirectToAction("WeekTimetable", new { ClassId = ClassId });
                 }
-                ViewBag.TeacherUsername = "Already exist";
-                ViewBag.HourErr = "Already exist";
-                ViewBag.Weekday = "Already exist";
-                return View(s);
+                if (! (s.DayId == schedule.DayId && s.Hour == schedule.Hour && s.ClassId == schedule.ClassId) )
+                {
+                    ViewBag.TeacherUsername = "Already exist";
+                    ViewBag.HourErr = "Already exist";
+                    ViewBag.Weekday = "Already exist";
+                    return View(s);
+                }
+
             }
             if (TeacherServices.IsTeacherBusy(schedule.TeacherId, schedule.DayId, schedule.Hour))
             {
@@ -143,9 +152,7 @@ namespace School_Project.Controllers
                 ViewBag.HourErr = "hour range is from 1 to 7";
                 return View(s);
             }
-            schedule.Id = SId;
-            string Profession = UserServices.GetUserById(schedule.TeacherId).Profession;
-            schedule.Title = Profession + "Hour";
+
             ScheduleServices.UpdateSchedule(schedule);
             return RedirectToAction("WeekTimetable", new { ClassId = ClassId });
 

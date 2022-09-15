@@ -110,10 +110,15 @@ namespace School_Project.Services
             {
                 var itemToRemove = db.Users.SingleOrDefault(x => x.Id == Id); //returns a single item.
 
-                if(itemToRemove.Role == "Teacher")
+                if (itemToRemove.Role == "Teacher")
                 {
                     var itemsToRemove = db.Schedules.Where(x => x.TeacherId == Id); //returns a single item.
                     db.Schedules.RemoveRange(itemsToRemove);
+                }
+                if (itemToRemove.Role == "Student")
+                {
+                    var itemsToRemove = db.Grades.Where(x => x.StudentId == Id); //returns a single item.
+                    db.Grades.RemoveRange(itemsToRemove);
                 }
 
                 if (itemToRemove != null)
