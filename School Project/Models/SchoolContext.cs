@@ -50,7 +50,7 @@ namespace School_Project.Models
                 entity.HasOne(d => d.Student)
                     .WithMany(p => p.Grades)
                     .HasForeignKey(d => d.StudentId)
-                    .HasConstraintName("FK_MarkBook_Users");
+                    .HasConstraintName("FK_Grades_Users");
             });
 
             modelBuilder.Entity<Schedule>(entity =>
@@ -65,6 +65,7 @@ namespace School_Project.Models
                 entity.HasOne(d => d.Teacher)
                     .WithMany(p => p.Schedules)
                     .HasForeignKey(d => d.TeacherId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Schedules_Users");
             });
 
@@ -81,6 +82,12 @@ namespace School_Project.Models
                 entity.Property(e => e.Role).HasMaxLength(50);
 
                 entity.Property(e => e.Username).HasMaxLength(50);
+
+                entity.HasOne(d => d.Class)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.ClassId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_Users_Classes");
             });
 
             OnModelCreatingPartial(modelBuilder);

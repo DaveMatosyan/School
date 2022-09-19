@@ -1,4 +1,5 @@
 ﻿using School_Project.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace School_Project.Services
 {
