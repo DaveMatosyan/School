@@ -26,7 +26,7 @@ namespace School_Project.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=SQL8001.site4now.net;Initial Catalog=db_a8c99e_school;User Id=db_a8c99e_school_admin;Password=3hg6t9jgo9aa"); ;
+                optionsBuilder.UseSqlServer("Data Source=SQL8002.site4now.net;Initial Catalog=db_a8c99e_school;User Id=db_a8c99e_school_admin;Password=3hg6t9jgo9aa;");
             }
         }
 
@@ -50,8 +50,7 @@ namespace School_Project.Models
                 entity.HasOne(d => d.Student)
                     .WithMany(p => p.Grades)
                     .HasForeignKey(d => d.StudentId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_MarkBook_Users");
+                    .HasConstraintName("FK_Grades_Users");
             });
 
             modelBuilder.Entity<Schedule>(entity =>
@@ -61,7 +60,6 @@ namespace School_Project.Models
                 entity.HasOne(d => d.Class)
                     .WithMany(p => p.Schedules)
                     .HasForeignKey(d => d.ClassId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Schedules_Classes");
 
                 entity.HasOne(d => d.Teacher)
@@ -84,6 +82,12 @@ namespace School_Project.Models
                 entity.Property(e => e.Role).HasMaxLength(50);
 
                 entity.Property(e => e.Username).HasMaxLength(50);
+
+                entity.HasOne(d => d.Class)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.ClassId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_Users_Classes");
             });
 
             OnModelCreatingPartial(modelBuilder);

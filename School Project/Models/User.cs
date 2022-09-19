@@ -20,6 +20,7 @@ namespace School_Project.Models
         public int? ClassId { get; set; }
         public string? Profession { get; set; }
 
+        public virtual Class? Class { get; set; }
         public virtual ICollection<Grade> Grades { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
     }
