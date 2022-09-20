@@ -1,4 +1,5 @@
-﻿@model School_Project.Models.User []
+﻿@using School_Project.Models
+@model School_Project.Models.User []
 
 @{
     ViewData["Title"] = "Grades";
@@ -89,10 +90,6 @@
             <label>Grade</label>
             <input type="text" class="form-control Grade" name="Grade">
           </div>
-          <div class="form-group">
-            <label>Hour</label>
-            <input type="text" class="form-control Hour" name="Hour">
-          </div>
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary closeTeacherModal" data-dismiss="modal">Close</button>
@@ -129,16 +126,26 @@
                             debugger;
 
                             $('.Grade').val(Grade.grade1);
-                            $('.Hour').val(Grade.hour);
+                            $('.Day').val(CreatingDay);
                             $('.ItemId').val(Id);
                         }
                     })
                 } else {
 
-                    $('.Grade').val("");
-                    $('.Hour').val("");
-                    $('.ItemId').val(0);
+                    $.ajax({
+                        type: 'GET',
+                        url: '/MarkBook/Create/' + "?ClassId=" + @ViewBag.Class.Id + "&Day=" + CreatingDay,
+                        success: function(IsValid) {
+                            debugger;
+                            if(IsValid.isValid) {
+                                $('.Day').val(CreatingDay);
+                            } else {
+                                var teacherModal = document.getElementById("teacherModal");
+                                teacherModal.classList.remove('show-modal');
+                            }
 
+                        }
+                    })
                 }
 
             })

@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using School_Project.Models;
 using School_Project.Services;
 
 namespace School_Project.Controllers
@@ -21,6 +24,21 @@ namespace School_Project.Controllers
         {
             var Grade = MarkBookServices.GetGrade(id);
             return new JsonResult(Grade);
+        }
+        public IActionResult Create(int ClassId, int Day)
+        {
+            int TeacherId = Convert.ToInt32(User.Identity.Name);
+            Bool IsValid = new();
+            if(GradeServices.IsTeacherValid(TeacherId,Day,ClassId))
+            {
+                IsValid.IsValid = true;
+            } 
+            else
+            {
+                IsValid.IsValid = false;
+            }
+
+            return new JsonResult(IsValid);
         }
         [HttpPost]
         public IActionResult Form(int ItemId, int StudentId, int Grade, int Day, int Hour, int ClassId)

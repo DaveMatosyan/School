@@ -128,7 +128,29 @@ namespace School_Project.Services
             }
             return "sss";
         }
-        
+        public static int GetDayIdByWeekday(string WeekDay)
+        {
+            switch (WeekDay)
+            {
+
+                case "Monday":
+                    return 1;
+                case "Tuesday":
+                    return 2;
+                case "Wednesday":
+                    return 3;
+                case "Thursday":
+                    return 4;
+                case "Friday":
+                    return 5;
+                case "Saturday":
+                    return 6;
+                case "Sunday":
+                    return 7;
+            }
+            return 1;
+        }
+
         public static bool IsExist(int ClassId, int WeekdayId, int Hour)
         {
             using (SchoolContext db = new SchoolContext())
