@@ -83,7 +83,7 @@
        <form action="Form" method="post" >
           <div class="form-group">
             <label >Day</label>
-            <input type="text" class="form-control Day" name="Day">
+            <input type="text" class="form-control Day" name="Day" disabled>
           </div>
 
           <div class="form-group">
@@ -98,6 +98,7 @@
           <input type="hidden" class="StudentId" name="StudentId">
           <input type="hidden" class="ItemId" name="ItemId">
           <input type="hidden" class="ClassId" name="ClassId">
+          <input type="hidden" class="DayId" name="DayId">
         </form>
       </div>
 
@@ -116,6 +117,7 @@
                 $('.ClassId').val(@ViewBag.Class.Id);
                 var CreatingDay = $(this).parent().find('.CreatingDay').val();
                 $('.Day').val(CreatingDay);
+                $('.DayId').val(CreatingDay);
                 debugger;
 
                 if (Id != undefined) {

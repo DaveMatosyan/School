@@ -20,20 +20,32 @@ namespace School_Project.Services
                 return grade;
             }
         }
-        public static void AddGrade(int StudenId, int Grade, int Day, int Hour, string Title)
+        public static void AddGrade(int StudenId, int TeacherId, int Day, int ClassId, string Title, int Grade)
         {
             Grade grade = new();
             grade.StudentId = StudenId;
             grade.Grade1 = Grade;
             grade.Title = Title;
-            grade.Hour = Hour;
             DateTime today = DateTime.Today;
             DateTime dt = new DateTime(today.Year, today.Month, Day);
             grade.Day = dt;
 
+            int DayId = ScheduleServices.GetDayIdByWeekday(dt.DayOfWeek.ToString());
+
             using (SchoolContext db = new SchoolContext())
             {
+                Schedule schedule = db.Schedules.FirstOrDefault(x => x.DayId == DayId && x.ClassId == ClassId && x.TeacherId == TeacherId);
+                grade.Hour = schedule.Hour;
                 db.Add(grade);
+                db.SaveChanges();
+            }
+        }
+        public static void EditGrade(int Grade, int Id)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                Grade grade = db.Grades.Find(Id);
+                grade.Grade1 = Grade;
                 db.SaveChanges();
             }
         }

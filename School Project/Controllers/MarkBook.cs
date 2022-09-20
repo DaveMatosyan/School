@@ -41,22 +41,22 @@ namespace School_Project.Controllers
             return new JsonResult(IsValid);
         }
         [HttpPost]
-        public IActionResult Form(int ItemId, int StudentId, int Grade, int Day, int Hour, int ClassId)
+        public IActionResult Form(int ItemId, int StudentId, int Grade, int DayId, int ClassId)
         {
             int TeacherId = Convert.ToInt32(User.Identity.Name);
 
             string Title = UserServices.GetUserById(TeacherId).Profession + "Hour";
-            if (Grade < 1 && Grade > 10 || Day < 1 || Hour < 1 && Hour > 7)
+            if (Grade < 1 || Grade > 10 )
             {
                 return RedirectToAction("Grades", new { ClassId = ClassId, Title = Title });
             }
             if(ItemId == 0)
             {
-                MarkBookServices.AddGrade(StudentId, Grade, Day, Hour, Title);
+                MarkBookServices.AddGrade(StudentId, TeacherId, DayId, ClassId, Title, Grade);
                 return RedirectToAction("Grades", new { ClassId = ClassId, Title = Title });
 
             }
-            //MarkBookServices.EditGrade(int StudenId, int Grade, int Day);
+            MarkBookServices.EditGrade(Grade, ItemId);
             return RedirectToAction("Grades", new { ClassId = ClassId, Title = Title });
         }
     }
