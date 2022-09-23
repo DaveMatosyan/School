@@ -34,7 +34,7 @@ namespace School_Project.Services
 
             }
         }
-        static public Class? GetClassById(int Id)
+        static public Class? GetClassById(int? Id)
         {
             using (var context = new SchoolContext())
             {

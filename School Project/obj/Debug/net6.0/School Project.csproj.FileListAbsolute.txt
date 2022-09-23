@@ -12,7 +12,6 @@ C:\Users\user\source\repos\School Project\School Project\bin\Debug\net6.0\Messag
 C:\Users\user\source\repos\School Project\School Project\bin\Debug\net6.0\MessagePack.Annotations.dll
 C:\Users\user\source\repos\School Project\School Project\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\user\source\repos\School Project\School Project\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\user\source\repos\School Project\School Project\bin\Debug\net6.0\Microsoft.Build.Locator.dll
 C:\Users\user\source\repos\School Project\School Project\bin\Debug\net6.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
 C:\Users\user\source\repos\School Project\School Project\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
 C:\Users\user\source\repos\School Project\School Project\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -260,3 +259,6 @@ C:\Users\user\source\repos\School Project\School Project\obj\Debug\net6.0\refint
 C:\Users\user\source\repos\School Project\School Project\obj\Debug\net6.0\School Project.pdb
 C:\Users\user\source\repos\School Project\School Project\obj\Debug\net6.0\School Project.genruntimeconfig.cache
 C:\Users\user\source\repos\School Project\School Project\obj\Debug\net6.0\ref\School Project.dll
+C:\Users\user\source\repos\School Project\School Project\bin\Debug\net6.0\Microsoft.Build.dll
+C:\Users\user\source\repos\School Project\School Project\bin\Debug\net6.0\Microsoft.Build.Framework.dll
+C:\Users\user\source\repos\School Project\School Project\bin\Debug\net6.0\Microsoft.NET.StringTools.dll

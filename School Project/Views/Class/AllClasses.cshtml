@@ -31,7 +31,12 @@
                                         MarkBook
                                     </th>
                                 }
-                                
+                                @if(User.IsInRole("Principal"))
+                                {
+                                    <th>
+                                        Students
+                                    </th>
+                                }
                                 @if(User.IsInRole("Principal"))
                                 {
                                     <th>
@@ -58,6 +63,9 @@
                                 {
                                     <td>
                                         <a asp-controller="Schedule" asp-action="WeekTimetable" asp-route-ClassId="@item.Id">Schedules</a>
+                                    </td>
+                                    <td>
+                                        <a asp-controller="Student" asp-action="Students" asp-route-ClassId="@item.Id">Students</a>
                                     </td>
                                     <td>
                                         <a class="btn " asp-action="Edit" asp-route-id="@item.Id"><img class="edit-icon" src="https://www.svgrepo.com/show/36160/edit-button.svg" /></a>

@@ -1,0 +1,141 @@
+﻿@model IEnumerable<School_Project.Models.User>
+@{
+    ViewData["Title"] = "Students";
+}
+ <section class="d-flex pt-80 justify-content-center">
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+
+
+<h1>@ViewBag.ClassName Students</h1>
+
+<div class="col py-3 ">
+    <div class="overflow-auto">
+<table class="table table-hover teachers-table table-with-buttons">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+
+            <td class="d-flex justify-content-center align-items-center">
+                <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal"><img class="edit-icon" src="https://www.svgrepo.com/show/36160/edit-button.svg" /></a>
+                <a class="btn" asp-action="Delete" asp-route-id="@item.Id" asp-route-CurrentClassId="@ViewBag.ClassId"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Delete-button.svg"/></a>
+                <input type="hidden" class="Id" value="@item.Id" />
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+        <p>
+            <a class="btn btn-primary" asp-action="AddTeacher">Create New</a>
+        </p>
+</div>
+</div>
+</div>
+
+
+<div class="modal" Id="teacherModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Teacher</h5>
+        <button type="button" class="close closeTeacherModal custom-close-icon" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <form action="Edit" method="post">
+           @{User teacher = new User();}
+          <div class="form-group">
+            <label >First Name</label>
+            <input type="text" class="form-control FirstName" name="FirstName">
+          </div>
+
+          <div class="form-group">
+            <label >Last Name</label>   
+            <input type="text" class="form-control LastName" name="LastName">
+          </div>
+
+          <div class="form-group">
+            <label >Username</label>
+            <input type="text" class="form-control Username" name="Username">
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="text" class="form-control Password" name="Password" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label>Class</label>
+                        <select class="form-select ClassId" name="ClassId">
+                                @foreach(var item in ViewBag.Classes)
+                                {
+                                    <option value="@item.Id">@item.Class1</option>
+                                }
+                        </select>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary closeTeacherModal" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+          <input type="hidden" class="StudentId" name="StudentId">
+          <input type="hidden" class="CurrentClassId" name="CurrentClassId">
+        </form>
+      </div>
+
+   </div>
+  </div>
+   <div  class="modal-layer closeTeacherModal"></div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-google="tooltip"]').tooltip();
+
+            $('table .edit').on('click', function () {
+                var Id = $(this).parent().find('.Id').val();
+                $.ajax({
+                    type: 'GET',
+                    url: '/Student/Find/' + Id,
+                    success: function (Student) {
+                        debugger;
+                        $('.FirstName').val(Student.firstName);
+                        $('.LastName').val(Student.lastName);
+                        $('.Username').val(Student.username);
+                        $('.ClassId').val(Student.class.class1);
+                        $('.StudentId').val(Student.id);
+                        $('.CurrentClassId').val(@ViewBag.ClassId);
+                    }
+                })
+            })
+        });
+    </script>
+
+}
+</div>
+
+</section>

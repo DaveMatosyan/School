@@ -19,7 +19,7 @@ namespace School_Project.Services
         {
             using (SchoolContext db = new SchoolContext())
             {
-                var items = db.Users.Where(b => b.ClassId == ClassId).ToArray();
+                var items = db.Users.Where(b => b.ClassId == ClassId).Include("Class").ToArray();
                 return items;
             }
         }
@@ -31,6 +31,38 @@ namespace School_Project.Services
                 user.Role = "Student";
                 context.Add(user);
                 context.SaveChanges();
+            }
+        }
+        static public User GetStudentById(int Id)
+        {
+            using (var context = new SchoolContext())
+            {
+                User user = context.Users.Find(Id);
+                user.Class = ClassServices.GetClassById(user.ClassId);
+
+                return user;
+            }
+        }
+        public static void Edit(User Student)
+        {
+            if (Student.FirstName == null || Student.LastName == null || Student.Username == null)
+            {
+                return;
+            }
+            var OldStudent = UserServices.GetUserById(Student.Id);
+            if (Student.Password == null)
+            {
+                Student.Password = OldStudent.Password;
+            }
+            else
+            {
+                Student.Password = HashServices.HashPassword(Student.Password);
+
+            }
+            using (SchoolContext db = new SchoolContext())
+            {
+                db.Update(Student);
+                db.SaveChanges();
             }
         }
     }
