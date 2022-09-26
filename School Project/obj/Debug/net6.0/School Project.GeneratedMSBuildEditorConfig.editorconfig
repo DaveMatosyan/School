@@ -47,6 +47,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya0Jvb2tcR3JhZGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/user/source/repos/School Project/School Project/Views/MarkBook/Marks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya0Jvb2tcTWFya3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/user/source/repos/School Project/School Project/Views/Schedule/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -69,6 +73,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/user/source/repos/School Project/School Project/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/source/repos/School Project/School Project/Views/Student/AddStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxBZGRTdHVkZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/user/source/repos/School Project/School Project/Views/Student/Students.cshtml]

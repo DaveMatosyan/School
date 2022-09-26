@@ -14,6 +14,16 @@ namespace School_Project.Controllers
             ViewBag.ClassName = ClassServices.GetClassById(ClassId).Class1;
             return View(Students);
         }
+        public IActionResult AddStudent(int ClassId)
+        {
+            ViewBag.ClassId = ClassId;
+            if(ClassId != 0)
+            {
+                ViewBag.ClassName = ClassServices.GetClassById(ClassId).Class1;
+            }
+            ViewBag.Classes = ClassServices.GetAllClasses();
+            return View();
+        }
         public IActionResult Find(int id)
         {
             var Student = StudentServices.GetStudentById(id);

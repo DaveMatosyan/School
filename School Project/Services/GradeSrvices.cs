@@ -12,6 +12,14 @@ namespace School_Project.Services
                 return grades;
             }
         }
+        public static Grade[] GetGradesByMonthYearStudent(int Month, int Year, int StudentId)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                var grades = db.Grades.Where(b => b.Day.Month == Month && b.Day.Year == Year && b.StudentId == StudentId).ToArray();
+                return grades;
+            }
+        }
         public static Grade GetGrade(int Id)
         {
             using (SchoolContext db = new SchoolContext())

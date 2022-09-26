@@ -85,6 +85,14 @@
                                 </a>
                             </li>
                         }
+                        @if (User.IsInRole("Student"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link align-middle text-light" asp-area="" asp-controller="MarkBook" asp-action="Marks">
+                                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 ">Marks</span>
+                                </a>
+                            </li>
+                        }
 
                         @if (ViewContext.RouteData.Values.Where(v => v.Key == "action").FirstOrDefault().Value.ToString() == "Profile" && !User.IsInRole("Principal"))
                         {

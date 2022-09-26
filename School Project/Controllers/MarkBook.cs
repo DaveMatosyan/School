@@ -7,9 +7,9 @@ using School_Project.Services;
 
 namespace School_Project.Controllers
 {
-    [Authorize(Roles = "Teacher")]
     public class MarkBook : Controller
     {
+        [Authorize(Roles = "Teacher")]
         public IActionResult Grades(string Title, int ClassId)
         {
             ViewBag.Grades = MarkBookServices.GetGrades(Title, ClassId);
@@ -20,11 +20,13 @@ namespace School_Project.Controllers
 
             return View(Students);
         }
+        [Authorize(Roles = "Teacher")]
         public IActionResult Find(int id)
         {
             var Grade = MarkBookServices.GetGrade(id);
             return new JsonResult(Grade);
         }
+        [Authorize(Roles = "Teacher")]
         public IActionResult Create(int ClassId, int Day)
         {
             int TeacherId = Convert.ToInt32(User.Identity.Name);
@@ -41,6 +43,7 @@ namespace School_Project.Controllers
             return new JsonResult(IsValid);
         }
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
         public IActionResult Form(int ItemId, int StudentId, int Grade, int DayId, int ClassId)
         {
             int TeacherId = Convert.ToInt32(User.Identity.Name);
@@ -58,6 +61,27 @@ namespace School_Project.Controllers
             }
             MarkBookServices.EditGrade(Grade, ItemId);
             return RedirectToAction("Grades", new { ClassId = ClassId, Title = Title });
+        }
+        [Authorize(Roles = "Student")]
+        public IActionResult Marks(int Month, int Year)
+        {
+            int StudentId = Convert.ToInt32(User.Identity.Name);
+
+            if(Year == 0)
+            {
+                Year = DateTime.Now.Year;
+                Month = DateTime.Now.Month;
+                ViewBag.DaysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+            } else
+            {
+                ViewBag.DaysInMonth = DateTime.DaysInMonth(Year, Month);
+
+            }
+            ViewBag.Year = Year;
+            ViewBag.Month = Month;
+            var Grades = MarkBookServices.GetGradesByMonthYearStudent(Month, Year, StudentId);
+
+            return View(Grades);
         }
     }
 }

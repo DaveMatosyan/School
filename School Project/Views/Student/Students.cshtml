@@ -51,7 +51,7 @@
 </table>
 </div>
         <p>
-            <a class="btn btn-primary" asp-action="AddTeacher">Create New</a>
+            <a class="btn btn-primary" asp-action="AddStudent" asp-route-ClassId="@ViewBag.ClassId">AddStudent</a>
         </p>
 </div>
 </div>
@@ -92,10 +92,10 @@
           <div class="form-group">
             <label>Class</label>
                         <select class="form-select ClassId" name="ClassId">
-                                @foreach(var item in ViewBag.Classes)
-                                {
-                                    <option value="@item.Id">@item.Class1</option>
-                                }
+                                    @foreach(var item in ViewBag.Classes)
+                                    {
+                                        <option value="@item.Id">@item.Class1</option>
+                                    }
                         </select>
           </div>
 
