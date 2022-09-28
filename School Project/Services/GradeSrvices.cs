@@ -12,6 +12,7 @@ namespace School_Project.Services
                 return grades;
             }
         }
+
         public static Grade[] GetGradesByMonthYearStudent(int Month, int Year, int StudentId)
         {
             using (SchoolContext db = new SchoolContext())

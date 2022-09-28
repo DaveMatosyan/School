@@ -12,10 +12,14 @@ namespace School_Project.Controllers
         [Authorize(Roles = "Teacher")]
         public IActionResult Grades(string Title, int ClassId)
         {
-            ViewBag.Grades = MarkBookServices.GetGrades(Title, ClassId);
+            int TeacherId = Convert.ToInt32(User.Identity.Name);
+            string str = UserServices.GetUserById(TeacherId).Profession + "Hour";
+            ViewBag.Grades = MarkBookServices.GetGrades(str, ClassId);
             ViewBag.Class = ClassServices.GetClassById(ClassId);
             ViewBag.DaysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-            int TeacherId = Convert.ToInt32(User.Identity.Name);
+            ViewBag.Schedules = ScheduleServices.GetScedulesByClassIdAndLesson(ClassId, str).ToArray();
+
+            ViewBag.c = str;
             var Students = StudentServices.GetStudentsByTeacherAndClass(TeacherId, ClassId);
 
             return View(Students);

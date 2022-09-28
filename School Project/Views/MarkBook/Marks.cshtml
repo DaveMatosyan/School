@@ -20,7 +20,7 @@
 
             @for(int i = 1; i < ViewBag.DaysInMonth+1; i++)
             {
-            <th>
+            <th class="markbook-grades">
                 @i
             </th>
             }
@@ -40,7 +40,7 @@
                         {
                                 @if(!Array.Exists( grades, element => element.Day.Day == j && element.Title == "MathematicsHour"))
                                 {
-                                    <td>
+                                    <td class="markbook-grades">
                                         -
                                     </td>
 
@@ -48,7 +48,7 @@
                                 else
                                 {
                                      Grade grade = grades[Array.FindIndex(grades, val => val.Day.Day == j && val.Title == "MathematicsHour")];
-                                    <td>
+                                    <td class="markbook-grades">
                                         @grade.Grade1
                                     </td>
                                 }

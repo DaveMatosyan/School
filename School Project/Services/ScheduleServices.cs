@@ -21,7 +21,14 @@ namespace School_Project.Services
                 return list;
             }
         }
-        
+        public static List<Schedule> GetScedulesByClassIdAndLesson(int? ClassId, string Title)
+        {
+            using (SchoolContext db = new SchoolContext())
+            {
+                var list = db.Schedules.Where(b => b.ClassId == ClassId && b.Title == Title).OrderBy(o => o.Hour).OrderBy(o => o.DayId).ToList();
+                return list;
+            }
+        }
         public static Schedule GetById(int Id)
         {
             using (SchoolContext db = new SchoolContext())

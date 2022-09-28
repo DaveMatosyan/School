@@ -1,4 +1,5 @@
 ﻿@using School_Project.Models
+@using School_Project.Services
 @model School_Project.Models.User []
 
 @{
@@ -39,23 +40,37 @@
                                     
                                             @{
                                                 Grade[] grades = ViewBag.Grades; 
+                                                Schedule[] schedules = ViewBag.Schedules; 
                                             }
                                             @if(!Array.Exists( grades, element => element.Day.Day == z && element.StudentId == Model[i].Id))
                                             {
-                                                <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal">-</a>
+                                            DateTime now = DateTime.Now;
+                                            var d = new DateTime(now.Year,now.Month,z);
+                                                int DId = ScheduleServices.GetDayIdByWeekday(d.DayOfWeek.ToString());
+                                            string Title = ViewBag.c;
+                                            if (Array.Exists(schedules, element => element.DayId == DId && element.Title == Title))
+                                            {
+                                                <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal">+</a>
                                                 <input type="hidden" class="CreatingDay" value="@z" />
-                                            <input type="hidden" class="CreatingStudentId" value="@Model[i].Id" />
-
+                                                <input type="hidden" class="CreatingStudentId" value="@Model[i].Id" />
+                                            }
+                                            else
+                                            {
+                                                <div class="markbook-grades" title="no no no">-</div>
+                                            }
 
 
                                         }
                                         else
                                         {
                                             {
-                                                Grade grade = grades[Array.FindIndex(grades, val => val.Day.Day == z && val.StudentId == Model[i].Id)];
-                                                <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal">@grade.Grade1</a>
-                                                <input type="hidden" class="Id" value="@grade.Id" />
-                                                <input type="hidden" class="CreatingDay" value="@z" />
+
+                                                    Grade grade = grades[Array.FindIndex(grades, val => val.Day.Day == z && val.StudentId == Model[i].Id)];
+                                                    <a href="#teacherModal" class="btn teacherModalButton edit" data-toggle="modal">@grade.Grade1</a>
+                                                    <input type="hidden" class="Id" value="@grade.Id" />
+                                                    <input type="hidden" class="CreatingDay" value="@z" />
+
+
                                             }
 
                                             }
