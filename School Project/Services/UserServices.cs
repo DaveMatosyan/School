@@ -77,6 +77,10 @@ namespace School_Project.Services
             {
                 ChangedUser.Profession = "Principal";
             }
+            if (ChangedUser.Role == "Student")
+            {
+                ChangedUser.ClassId = OldUser.ClassId;
+            }
 
             using (SchoolContext db = new SchoolContext())
             {

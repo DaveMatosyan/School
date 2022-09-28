@@ -11,6 +11,8 @@
   <div class="container">
     <div class="row d-flex justify-content-center align-items-center">
             <h1>Marks</h1>
+
+    <div class="overflow-auto">
 <table class="table table-hover ">
     <thead>
         <tr>
@@ -20,7 +22,7 @@
 
             @for(int i = 1; i < ViewBag.DaysInMonth+1; i++)
             {
-            <th class="markbook-grades">
+            <th class="t-a-c min-width-48px">
                 @i
             </th>
             }
@@ -29,9 +31,9 @@
     </thead>
     <tbody>
         <tr>
-            <td>
+            <th>
                 Mathematics
-            </td>
+            </th>
                                                 
                         @{
                             Grade[] grades = @Model; 
@@ -40,7 +42,7 @@
                         {
                                 @if(!Array.Exists( grades, element => element.Day.Day == j && element.Title == "MathematicsHour"))
                                 {
-                                    <td class="markbook-grades">
+                                    <td class="t-a-c">
                                         -
                                     </td>
 
@@ -48,21 +50,21 @@
                                 else
                                 {
                                      Grade grade = grades[Array.FindIndex(grades, val => val.Day.Day == j && val.Title == "MathematicsHour")];
-                                    <td class="markbook-grades">
+                                    <td class="t-a-c">
                                         @grade.Grade1
                                     </td>
                                 }
                         }
         </tr>
         <tr>
-            <td>
+            <th>
                 Physics
-            </td>
+            </th>
                         @for(int j = 1; j < ViewBag.DaysInMonth+1; j++)
                         {
                                 @if(!Array.Exists( grades, element => element.Day.Day == j && element.Title == "PhysicsHour"))
                                 {
-                                    <td>
+                                    <td class="t-a-c">
                                         -
                                     </td>
 
@@ -70,21 +72,21 @@
                                 else
                                 {
                                      Grade grade = grades[Array.FindIndex(grades, val => val.Day.Day == j && val.Title == "PhysicsHour")];
-                                    <td>
+                                    <td class="t-a-c">
                                         @grade.Grade1
                                     </td>
                                 }
                         }
         </tr>
         <tr>
-            <td>
+            <th>
                 Chemistry
-            </td>
+            </th>
                         @for(int j = 1; j < ViewBag.DaysInMonth+1; j++)
                         {
                                 @if(!Array.Exists( grades, element => element.Day.Day == j && element.Title == "ChemistryHour"))
                                 {
-                                    <td>
+                                    <td class="t-a-c">
                                         -
                                     </td>
 
@@ -92,7 +94,7 @@
                                 else
                                 {
                                      Grade grade = grades[Array.FindIndex(grades, val => val.Day.Day == j && val.Title == "ChemistryHour")];
-                                    <td>
+                                    <td class="t-a-c">
                                         @grade.Grade1
                                     </td>
                                 }
@@ -101,6 +103,7 @@
 
     </tbody>
 </table>
+</div>
 </div>
 </div>
 </section>

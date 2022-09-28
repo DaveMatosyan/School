@@ -123,7 +123,11 @@ namespace School_Project.Controllers
             ViewBag.Teachers = TeacherServices.GetTeachers();
             Models.Schedule s = ScheduleServices.GetById(SId);
             Models.Schedule TestSchedule = ScheduleServices.GetScedule(s.ClassId, s.DayId, s.Hour);
-
+            if (schedule.Hour > 7 || schedule.Hour < 1)
+            {
+                ViewBag.HourErr = "hour range is from 1 to 7";
+                return View(s);
+            }
             if (ScheduleServices.IsExist(ClassId, schedule.DayId, schedule.Hour))
             {
                 if(s.DayId== schedule.DayId && s.Hour==schedule.Hour && s.ClassId == schedule.ClassId && s.Title == schedule.Title)
